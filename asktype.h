@@ -9,6 +9,7 @@ namespace PelvikOrgansExaminationProtocolForm
     // input data typesd
     enum AskTypeEnum
     {
+        nothingAskType,  //use if shouldn't be answer or answer can't be readen
         stringAskType,
         numberAskType,
         floatAskType,
