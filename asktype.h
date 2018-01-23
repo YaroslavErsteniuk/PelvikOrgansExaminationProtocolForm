@@ -2,7 +2,8 @@
 #define ASKTYPE_H
 
 #include <QString>
-#include <list>
+#include <QStringList>
+#include <stdexcept>
 
 namespace PelvikOrgansExaminationProtocolForm
 {
@@ -21,12 +22,24 @@ namespace PelvikOrgansExaminationProtocolForm
     struct  AskType
     {
        public:
-        AskTypeEnum askType;
+        AskTypeEnum askTypeValue;
 
         /* list of variants(in form of strings)
          * for askType-value "enumAskType"
          */
-        std::list<QString> enumVariantsList;
+        QStringList enumVariantsList;
+
+        AskType() noexcept: askTypeValue(nothingAskType)
+            {}
+        AskType(AskTypeEnum askTypeValue_): askTypeValue(askTypeValue_)
+            {}
+        AskType(AskTypeEnum askTypeValue_,const QStringList& enumVariantsList_): askTypeValue(nothingAskType),
+                                                                                 enumVariantsList(enumVariantsList_)
+        {
+            if ((askTypeValue_!=enumAskType) && (enumVariantsList_.isEmpty()))
+                throw std::invalid_argument("enumVariantsList can be not empty only for enumAskType");
+
+        }
     };
 }
 

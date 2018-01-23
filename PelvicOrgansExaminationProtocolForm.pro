@@ -27,13 +27,17 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     mainapplication.cpp \
-    abstractmainwindow.cpp
+    abstractmainwindow.cpp \
+    abstractparser.cpp \
+    abstractmainapplication.cpp
 
 HEADERS += \
         mainwindow.h \
     mainapplication.h \
     asktype.h \
-    abstractmainwindow.h
+    abstractmainwindow.h \
+    abstractparser.h \
+    abstractmainapplication.h
 
 FORMS += \
         mainwindow.ui
