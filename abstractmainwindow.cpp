@@ -4,7 +4,7 @@
 #include <QLineEdit>
 #include <QSpinBox>
 #include <QDoubleSpinBox>
-#include <QCalendarWidget>
+#include <QDateEdit>
 #include <QComboBox>
 
 using namespace PelvikOrgansExaminationProtocolForm;
@@ -23,7 +23,7 @@ AbstractMainWindow::~AbstractMainWindow()
  * In default realization
  * return false and doing nothing.
  */
-QPair<AskTypeEnum,QVariant> AbstractMainWindow::getAnswer(QString inputKey) const
+QPair<AskType, QVariant> AbstractMainWindow::getAnswer(QString inputKey) const
 try{
     auto v=widgets.at(inputKey);
 
@@ -51,7 +51,7 @@ try{
             const QDoubleSpinBox* doubleSpinBoxWidget=qobject_cast<const QDoubleSpinBox*>(v.second);
             if (!doubleSpinBoxWidget)
                 throw std::logic_error(errorString);
-            return QPair(v.first, QVariant(doubleSpinBoxWidget->value()));
+            return QPair(AskType(doubleSpinBoxWidget->decimals()), QVariant(doubleSpinBoxWidget->value()));
             break;
         case enumAskType: //input type for list of variants
             const QComboBox* comboBoxWidget=qobject_cast<const QComboBox*>(v.second);
@@ -60,10 +60,10 @@ try{
             return QPair(v.first, QVariant(comboBoxWidget->currentText()));
             break;
         case dateAskType:
-            const QCalendarWidget * calendarWidget=qobject_cast<const QCalendarWidget*>(v.second);
-            if (!calendarWidget)
+            const QDateEdit * dateEditWidget=qobject_cast<const QDateEdit*>(v.second);
+            if (!dateEditWidget)
                 throw std::logic_error(errorString);
-            return QPair(v.first, QVariant(calendarWidget->selectedDate()));
+            return QPair(v.first, QVariant(dateEditWidget->date()));
             break;
         default:
             return QPair(nothingAskType, QVariant());

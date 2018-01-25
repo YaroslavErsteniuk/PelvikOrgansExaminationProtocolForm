@@ -27,7 +27,7 @@ namespace PelvikOrgansExaminationProtocolForm
          * In case of undefined inputKey return
          * QPair(AskTypeEnum::nothingAskType, QVariant())
          */
-        virtual QPair<AskTypeEnum,QVariant> getAnswer(QString inputKey) const noexcept;
+        virtual QPair<AskType,QVariant> getAnswer(QString inputKey) const noexcept;
 
         /* This function add some question to form.
          * @inputKey use to identify question.

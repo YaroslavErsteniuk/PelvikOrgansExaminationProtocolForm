@@ -30,6 +30,8 @@ namespace PelvikOrgansExaminationProtocolForm
         bool addAsk(AskType ask, QRect place, QString inputKey, QString askText) noexcept override;
         bool addFormTemplate(QString htmlTempl) noexcept override;
         bool setFormTemplate(QString htmlTempl) noexcept override;
+    protected:
+        bool initializeComboBox() noexcept;
     private:
         Ui::MainWindow *ui;
     };

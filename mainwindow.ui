@@ -1,24 +1,1637 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow" >
-  <property name="geometry" >
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>989</width>
+    <height>583</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QMenuBar" name="menuBar" />
-  <widget class="QToolBar" name="mainToolBar" />
-  <widget class="QWidget" name="centralWidget" />
-  <widget class="QStatusBar" name="statusBar" />
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QScrollArea" name="scrollArea">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>961</width>
+      <height>511</height>
+     </rect>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>959</width>
+       <height>509</height>
+      </rect>
+     </property>
+     <widget class="QLabel" name="MetodikPatientLabel">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>150</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Методика проведення</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="fallopianTubesPatientComboBox">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>1000</y>
+        <width>201</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="recommendationPatientEdit">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>1080</y>
+        <width>291</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
+     <widget class="QLabel" name="doctorLabel">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>1120</y>
+        <width>51</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Лікар: </string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="snfPatientEdit">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>100</y>
+        <width>331</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
+     <widget class="QDateEdit" name="dateOMPatientEdit">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>190</y>
+        <width>110</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
+     <widget class="QLabel" name="fallopianTubesPatientLabel">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>1000</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Маткові труби: </string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="dateOMEndPatientLabel">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>190</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>р.</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="dateEndPatientLabel">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>150</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>р.</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox">
+      <property name="geometry">
+       <rect>
+        <x>810</x>
+        <y>150</y>
+        <width>131</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="recommendationPatientLabel">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>1080</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Рекомендовано: </string>
+      </property>
+     </widget>
+     <widget class="QDateEdit" name="dateFormEdit">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>1130</y>
+        <width>110</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="rightOvaryGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>690</y>
+        <width>451</width>
+        <height>291</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="title">
+       <string>Правий яєчник</string>
+      </property>
+      <widget class="QComboBox" name="vizualizationRightOvaryComboBox">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>421</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="conturRightOvaryComboBox">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>60</y>
+         <width>201</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="bordersRightOvaryComboBox">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>60</y>
+         <width>201</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QDoubleSpinBox" name="sizeRightOvaryDoubleSpinBox2">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>90</y>
+         <width>61</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+      <widget class="QLabel" name="xRighttOvaryLabel1">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>90</y>
+         <width>16</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>x</string>
+       </property>
+      </widget>
+      <widget class="QDoubleSpinBox" name="volumeRightOvaryDoubleSpinBox">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>120</y>
+         <width>71</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="decimals">
+        <number>2</number>
+       </property>
+       <property name="maximum">
+        <double>200.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+      <widget class="QLabel" name="xRightOvaryLabel2">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>90</y>
+         <width>16</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>x</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="volumeRightOvaryLabel">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>120</y>
+         <width>91</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>об'єм:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="sizeRightOvaryLabel">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>90</y>
+         <width>91</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>розміри:</string>
+       </property>
+      </widget>
+      <widget class="QDoubleSpinBox" name="sizeRightOvaryDoubleSpinBox3">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>90</y>
+         <width>61</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+      <widget class="QLabel" name="mlRightOvaryLabel">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>120</y>
+         <width>21</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>мл</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="mmRightOvaryLabel1">
+       <property name="geometry">
+        <rect>
+         <x>290</x>
+         <y>90</y>
+         <width>21</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>мм</string>
+       </property>
+      </widget>
+      <widget class="QDoubleSpinBox" name="sizeRightOvaryDoubleSpinBox1">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>90</y>
+         <width>61</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="foliculusRightOvaryEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>150</y>
+         <width>291</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="contentsRightOvaryComboBox">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>250</y>
+         <width>421</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="formationRightOvaryComboBox">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>190</y>
+         <width>421</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QDoubleSpinBox" name="diametrRightOvaryDoubleSpinBox">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>220</y>
+         <width>61</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+      <widget class="QLabel" name="mmRightOvaryLabel2">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>220</y>
+         <width>21</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>мм</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="diametrRightOvaryLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>220</y>
+         <width>91</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>діаметром:</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QSpinBox" name="yearPatientBox">
+      <property name="geometry">
+       <rect>
+        <x>840</x>
+        <y>100</y>
+        <width>61</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="minimum">
+       <number>1900</number>
+      </property>
+      <property name="maximum">
+       <number>2018</number>
+      </property>
+      <property name="value">
+       <number>1990</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="mainLabel">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>941</width>
+        <height>63</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Форма для створення протоколу
+ дослідження  органів малого тазу у жінок</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="snfPatientLabel">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>100</y>
+        <width>211</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Прізвище, ім’я, по-батькові: </string>
+      </property>
+     </widget>
+     <widget class="QDateEdit" name="datePatientEdit">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>150</y>
+        <width>110</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
+     <widget class="QLabel" name="dateOMPatientLabel">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>190</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>ОМ:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="doctorEdit">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>1120</y>
+        <width>271</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="liquidComboBox">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>1040</y>
+        <width>421</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="yearEndPatientLabel">
+      <property name="geometry">
+       <rect>
+        <x>910</x>
+        <y>100</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>р.н.</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="uterusGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>240</y>
+        <width>921</width>
+        <height>431</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="title">
+       <string>Матка</string>
+      </property>
+      <widget class="QComboBox" name="positionUterusComboBox">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>30</y>
+         <width>201</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="positionUterusLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>30</y>
+         <width>91</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>положення:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="formUterusLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>70</y>
+         <width>91</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>форма:</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="formUterusComboBox">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>70</y>
+         <width>231</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="conturUterusComboBox">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>110</y>
+         <width>221</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="conturUterusLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>110</y>
+         <width>91</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>контури:</string>
+       </property>
+      </widget>
+      <widget class="QGroupBox" name="uterusBodyGroupBox">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>150</y>
+         <width>351</width>
+         <height>101</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Тіло матки</string>
+       </property>
+       <widget class="QLabel" name="sizeUterusBodyLabel">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>30</y>
+          <width>91</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>розміри:</string>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="sizeUterusBodyDoubleSpinBox1">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>30</y>
+          <width>61</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+       </widget>
+       <widget class="QLabel" name="xUterusBodyLabel1">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>30</y>
+          <width>16</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>x</string>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="sizeUterusBodyDoubleSpinBox2">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>30</y>
+          <width>61</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="sizeUterusBodyDoubleSpinBox3">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>30</y>
+          <width>61</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+       </widget>
+       <widget class="QLabel" name="xUterusBodyLabel2">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>30</y>
+          <width>16</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>x</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="mmUterusBodyLabel">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>30</y>
+          <width>21</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>мм</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="volumeUterusBodyLabel">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>60</y>
+          <width>91</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>об'єм:</string>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="volumeUterusBodyDoubleSpinBox">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>60</y>
+          <width>71</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="decimals">
+         <number>2</number>
+        </property>
+        <property name="maximum">
+         <double>200.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+       </widget>
+       <widget class="QLabel" name="mlUterusBodyLabel">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>60</y>
+          <width>21</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>мл</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="uterusEndometriumGroupBox">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>270</y>
+         <width>351</width>
+         <height>141</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Ендометрій</string>
+       </property>
+       <widget class="QLabel" name="thicknessUterusEndometriumLabel">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>30</y>
+          <width>91</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>товщина:</string>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="thicknessUterusEndometriumDoubleSpinBox">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>30</y>
+          <width>71</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="decimals">
+         <number>2</number>
+        </property>
+        <property name="maximum">
+         <double>200.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+       </widget>
+       <widget class="QLabel" name="mmUterusEndometriumLabel">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>30</y>
+          <width>21</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>мм</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="vizualizationUterusEndometriumEdit">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>291</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="layersUterusEndometriumComboBox">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>100</y>
+          <width>291</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="uterusCervixGroupBox">
+       <property name="geometry">
+        <rect>
+         <x>580</x>
+         <y>150</y>
+         <width>321</width>
+         <height>101</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Шийка матки</string>
+       </property>
+       <widget class="QLabel" name="sizeUterusCervixLabel">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>30</y>
+          <width>91</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>розміри:</string>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="sizeUterusCervixDoubleSpinBox1">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>30</y>
+          <width>61</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+       </widget>
+       <widget class="QLabel" name="xUterusCervixLabel">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>30</y>
+          <width>16</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>x</string>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="sizeUterusCervixDoubleSpinBox2">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>30</y>
+          <width>61</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+       </widget>
+       <widget class="QLabel" name="mmUterusCervixLabel">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>30</y>
+          <width>21</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>мм</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="volumeUterusCervixLabel">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>60</y>
+          <width>91</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>об'єм:</string>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="volumeUterusCervixDoubleSpinBox">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>60</y>
+          <width>71</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="decimals">
+         <number>2</number>
+        </property>
+        <property name="maximum">
+         <double>200.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+       </widget>
+       <widget class="QLabel" name="mlUterusCervixLabel">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>60</y>
+          <width>21</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>мл</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="uterusCervicusCanalGroupBox">
+       <property name="geometry">
+        <rect>
+         <x>580</x>
+         <y>270</y>
+         <width>321</width>
+         <height>141</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Цервікальний канал</string>
+       </property>
+       <widget class="QLabel" name="echostructureUterusCervicusCanalLabel">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>ехоструктура:</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="vizualizationUterusCervicusCanalComboBox">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>291</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="echostructureUterusCervicusCanalComboBox">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>70</y>
+          <width>181</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="datePatientLabel">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>150</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Дата обстеження:</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="leftOvaryGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>690</y>
+        <width>451</width>
+        <height>291</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="title">
+       <string>Лівий яєчник</string>
+      </property>
+      <widget class="QComboBox" name="vizualizationLeftOvaryComboBox">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>421</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="conturLeftOvaryComboBox">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>60</y>
+         <width>201</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="bordersLeftOvaryComboBox">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>60</y>
+         <width>201</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QDoubleSpinBox" name="sizeLeftOvaryDoubleSpinBox2">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>90</y>
+         <width>61</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+      <widget class="QLabel" name="xLeftOvaryLabel1">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>90</y>
+         <width>16</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>x</string>
+       </property>
+      </widget>
+      <widget class="QDoubleSpinBox" name="volumeLeftOvaryDoubleSpinBox">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>120</y>
+         <width>71</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="decimals">
+        <number>2</number>
+       </property>
+       <property name="maximum">
+        <double>200.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+      <widget class="QLabel" name="xLeftOvaryLabel2">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>90</y>
+         <width>16</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>x</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="volumeLeftOvaryLabel">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>120</y>
+         <width>91</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>об'єм:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="sizeLeftOvaryLabel">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>90</y>
+         <width>91</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>розміри:</string>
+       </property>
+      </widget>
+      <widget class="QDoubleSpinBox" name="sizeLeftOvaryDoubleSpinBox3">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>90</y>
+         <width>61</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+      <widget class="QLabel" name="mlLeftOvaryLabel">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>120</y>
+         <width>21</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>мл</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="mmLeftOvaryLabel1">
+       <property name="geometry">
+        <rect>
+         <x>290</x>
+         <y>90</y>
+         <width>21</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>мм</string>
+       </property>
+      </widget>
+      <widget class="QDoubleSpinBox" name="sizeLeftOvaryDoubleSpinBox1">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>90</y>
+         <width>61</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="foliculusLeftOvaryEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>150</y>
+         <width>421</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="formationLeftOvaryComboBox">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>190</y>
+         <width>421</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QDoubleSpinBox" name="diametrLeftOvaryDoubleSpinBox">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>220</y>
+         <width>61</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+      <widget class="QLabel" name="diametrLeftOvaryLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>220</y>
+         <width>91</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>діаметром:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="mmLeftOvaryLabel2">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>220</y>
+         <width>21</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>мм</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="contentsLeftOvaryComboBox">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>250</y>
+         <width>421</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="yearBeginPatientLabel">
+      <property name="geometry">
+       <rect>
+        <x>710</x>
+        <y>100</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Рік народження:</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>989</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
+ <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections/>
 </ui>

@@ -62,3 +62,8 @@ bool MainWindow::setFormTemplate(QString htmlTempl) noexcept
 {
     return AbstractMainWindow::setFormTemplate(htmlTempl);
 }
+
+bool MainWindow::initializeComboBox() noexcept
+{
+
+}

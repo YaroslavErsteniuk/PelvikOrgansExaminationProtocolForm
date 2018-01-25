@@ -4,9 +4,6 @@
 #include <QString>
 #include <QRect>
 #include <QStringList>
-#include <QPair>
-#include <QVariant>
-#include <map>
 #include "asktype.h"
 
 namespace PelvikOrgansExaminationProtocolForm {
@@ -68,10 +65,6 @@ namespace PelvikOrgansExaminationProtocolForm {
          * The default realization return QStringList().
          */
         virtual QStringList mentionedAsksKeys() const noexcept =0;
-
-        virtual bool insertAnswer(QString inputKey, QPair<AskTypeEnum,QVariant> answerPair) noexcept =0;
-        virtual QString getForm(bool* ok_in) const noexcept =0;
-        virtual QString getForm(std::map<QString,QPair<AskTypeEnum,QVariant> > answerPairs, bool* ok_in) noexcept =0;
 
     };
 }

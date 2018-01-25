@@ -29,17 +29,18 @@ namespace PelvikOrgansExaminationProtocolForm
          */
         QStringList enumVariantsList;
 
-        AskType() noexcept: askTypeValue(nothingAskType)
-            {}
-        AskType(AskTypeEnum askTypeValue_): askTypeValue(askTypeValue_)
-            {}
-        AskType(AskTypeEnum askTypeValue_,const QStringList& enumVariantsList_): askTypeValue(nothingAskType),
-                                                                                 enumVariantsList(enumVariantsList_)
-        {
-            if ((askTypeValue_!=enumAskType) && (enumVariantsList_.isEmpty()))
-                throw std::invalid_argument("enumVariantsList can be not empty only for enumAskType");
+        int floatPrecision;
 
-        }
+        AskType() noexcept: askTypeValue(nothingAskType),floatPrecision(0)
+            {}
+        AskType(AskTypeEnum askTypeValue_) noexcept: askTypeValue(askTypeValue_),floatPrecision(0)
+            {}
+        explicit AskType(int floatPrecision_) noexcept: askTypeValue(floatAskType),floatPrecision(floatPrecision_)
+            {}
+
+        explicit AskType(const QStringList& enumVariantsList_) noexcept: askTypeValue(enumAskType),
+                                                     enumVariantsList(enumVariantsList_),floatPrecision(0)
+            {}
     };
 }
 

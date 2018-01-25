@@ -80,22 +80,3 @@ QStringList AbstractParser::mentionedAsksKeys() const noexcept
 {
     return QStringList();
 }
-
-bool AbstractParser::insertAnswer(QString inputKey, QPair<AskTypeEnum,QVariant> answerPair) noexcept
-{
-    return false;
-}
-
-QString AbstractParser::getForm(bool* ok_in) const noexcept
-{
-    if (ok_in)
-        ok_in=nullptr;
-    return QString();
-}
-
-QString AbstractParser::getForm(std::map<QString,QPair<AskTypeEnum,QVariant> > answerPairs, bool* ok_in) noexcept
-{
-    if (ok_in)
-        ok_in=nullptr;
-    return QString();
-}

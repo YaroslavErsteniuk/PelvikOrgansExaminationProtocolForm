@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -29,7 +29,8 @@ SOURCES += \
     mainapplication.cpp \
     abstractmainwindow.cpp \
     abstractparser.cpp \
-    abstractmainapplication.cpp
+    abstractmainapplication.cpp \
+    form.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -37,7 +38,8 @@ HEADERS += \
     asktype.h \
     abstractmainwindow.h \
     abstractparser.h \
-    abstractmainapplication.h
+    abstractmainapplication.h \
+    form.h
 
 FORMS += \
         mainwindow.ui
