@@ -65,5 +65,12 @@ bool MainWindow::setFormTemplate(QString htmlTempl) noexcept
 
 bool MainWindow::initializeComboBox() noexcept
 {
+    ui->metodicComboBox->setInsertPolicy(QComboBox::InsertAlphabetically);
+    ui->metodicComboBox->setEditable(true);
+    ui->metodicComboBox->addItems(QStringList("УЗД - ТВ"));
+
+    ui->fallopianTubesPatientComboBox->setInsertPolicy(QComboBox::InsertAlphabetically);
+    ui->fallopianTubesPatientComboBox->setEditable(true);
+    ui->fallopianTubesPatientComboBox->addItems(QStringList("не візуалізуються"));
 
 }

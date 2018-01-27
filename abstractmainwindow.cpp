@@ -15,6 +15,18 @@ AbstractMainWindow::AbstractMainWindow(QWidget *parent) : QMainWindow(parent)
 AbstractMainWindow::~AbstractMainWindow()
     {}
 
+bool AbstractMainWindow::isAnswer(QString inputKey) const noexcept
+try{
+    auto v=widgets.at(inputKey);
+    if (!v.second->isEnabled())
+            return false;
+    return true;
+}
+catch (std::out_of_range)
+{
+    return false;
+}
+
 /* This function return some value from form.
  * @inputKey use to identify question.
  * Type of value returned in first element of returned value.

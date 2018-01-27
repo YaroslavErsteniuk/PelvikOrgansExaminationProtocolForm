@@ -28,6 +28,7 @@ namespace PelvikOrgansExaminationProtocolForm
          * QPair(AskTypeEnum::nothingAskType, QVariant())
          */
         virtual QPair<AskType,QVariant> getAnswer(QString inputKey) const noexcept;
+        virtual bool isAnswer(QString inputKey) const noexcept;
 
         /* This function add some question to form.
          * @inputKey use to identify question.
