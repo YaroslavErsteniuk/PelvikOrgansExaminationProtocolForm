@@ -202,3 +202,21 @@ bool AbstractMainWindow::setFormTemplate(QString htmlTempl)
 {
     return false;
 }
+
+void AbstractMainWindow::setDependentWidgetsVisibility(std::list<std::list<QWidget*> >::iterator it, bool isVisible_) noexcept
+{
+    for (auto widget_: (*it))
+    {
+        widget_->setVisible(isVisible_);
+        emit widgetVisible(widget_,isVisible_);
+    }
+}
+
+void AbstractMainWindow::setDependentWidgetsEnabling(std::list<std::list<QWidget*> >::iterator it, bool isEnabled_) noexcept
+{
+    for (auto widget_: (*it))
+    {
+        widget_->setEnabled(isEnabled_);
+        emit widgetEnable(widget_,isEnabled_);
+    }
+}

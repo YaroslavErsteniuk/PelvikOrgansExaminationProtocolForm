@@ -2,14 +2,28 @@
 #define MAINWINDOW_H
 
 #include <QString>
+#include <vector>
 #include "abstractmainwindow.h"
+#include <stdexcept>
 
 namespace Ui {
     class MainWindow;
 }
 
+class QComboBox;
+class QDoubleSpinBox;
+class QLineEdit;
+
 namespace PelvikOrgansExaminationProtocolForm
 {
+
+class InvalidInitialization:  std::runtime_error
+{
+public:
+    explicit InvalidInitialization (const string& what_arg):  std::runtime_error(what_arg)
+        {}
+};
+
     /* Class for predefined input interface.
      * All function for adding template and question
      * return false and doing nothing.
@@ -17,7 +31,7 @@ namespace PelvikOrgansExaminationProtocolForm
     class MainWindow : public AbstractMainWindow
     {
         Q_OBJECT
-
+    private:
     public:
         explicit MainWindow(QWidget *parent = 0);
         ~MainWindow();
@@ -32,6 +46,12 @@ namespace PelvikOrgansExaminationProtocolForm
         bool setFormTemplate(QString htmlTempl) noexcept override;
     protected:
         bool initializeComboBox() noexcept;
+        bool initializeUterus() noexcept;
+        bool initializeOvary(QComboBox* vizualizationOvaryComboBox, QComboBox*  conturOvaryComboBox,
+                                         QComboBox*  bordersOvaryComboBox, QComboBox* formationOvaryComboBox,
+                                         QComboBox* contentsOvaryComboBox, QDoubleSpinBox* sizeOvaryDoubleSpinBox1,
+                                         QDoubleSpinBox* sizeOvaryDoubleSpinBox2, QDoubleSpinBox* sizeOvaryDoubleSpinBox3,
+                                         QLineEdit* foliculusOvaryEdit, QDoubleSpinBox* diametrOvaryDoubleSpinBox) noexcept;
     private:
         Ui::MainWindow *ui;
     };

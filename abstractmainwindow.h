@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QPair>
 #include <map>
+#include <list>
 #include "asktype.h"
 
 namespace PelvikOrgansExaminationProtocolForm
@@ -17,6 +18,7 @@ namespace PelvikOrgansExaminationProtocolForm
         Q_OBJECT
     protected:
         std::map<QString, QPair<AskTypeEnum,const QWidget*>> widgets;
+        std::list<std::list<QWidget*> > dependentWidgets;
     public:
         explicit AbstractMainWindow(QWidget *parent = nullptr);
         virtual ~AbstractMainWindow();
@@ -102,8 +104,12 @@ namespace PelvikOrgansExaminationProtocolForm
 
         void toPdfForm();
         void printForm();
-    public slots:
 
+        void widgetVisible(QWidget* widget_, bool isVisible_) noexcept;
+        void widgetEnable(QWidget* widget_, bool isEnabled_) noexcept;
+    protected slots:
+        virtual void setDependentWidgetsVisibility(std::list::iterator it, bool isVisible_) noexcept;
+        virtual void setDependentWidgetsEnabling(std::list::iterator it, bool isEnabled_) noexcept;
     };
 }
 
