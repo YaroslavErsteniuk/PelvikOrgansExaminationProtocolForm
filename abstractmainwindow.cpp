@@ -18,7 +18,7 @@ AbstractMainWindow::~AbstractMainWindow()
 bool AbstractMainWindow::isAnswer(QString inputKey) const noexcept
 try{
     auto v=widgets.at(inputKey);
-    if (!v.second->isEnabled())
+    if (!v.second->isEnabled() || !v.second->isVisible())
             return false;
     return true;
 }

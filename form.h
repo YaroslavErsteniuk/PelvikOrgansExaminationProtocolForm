@@ -20,6 +20,7 @@ namespace PelvikOrgansExaminationProtocolForm
         virtual ~Form() noexcept;
 
         virtual bool insertAnswer(QString inputKey, QPair<AskTypeEnum,QVariant> answerPair) noexcept;
+        virtual bool noAnswer(QString inputKey) noexcept;
 
         virtual bool setFormTemplate(QString formTemplate) noexcept; //not use "resetForm"
         virtual QString getFormTemplate() const noexcept;

@@ -4,7 +4,7 @@
 using namespace std;
 using namespace PelvikOrgansExaminationProtocolForm;
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(const QStringList &askKeywords, QWidget *parent) :
     AbstractMainWindow(parent),
     ui(new Ui::MainWindow)
 {

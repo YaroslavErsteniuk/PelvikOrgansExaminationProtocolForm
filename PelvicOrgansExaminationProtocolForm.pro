@@ -10,6 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = PelvicOrgansExaminationProtocolForm
 TEMPLATE = app
+CONFIG += c++1z
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -30,7 +31,8 @@ SOURCES += \
     abstractmainwindow.cpp \
     abstractparser.cpp \
     abstractmainapplication.cpp \
-    form.cpp
+    form.cpp \
+    keyparser.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,7 +41,8 @@ HEADERS += \
     abstractmainwindow.h \
     abstractparser.h \
     abstractmainapplication.h \
-    form.h
+    form.h \
+    keyparser.h
 
 FORMS += \
         mainwindow.ui

@@ -33,7 +33,7 @@ public:
         Q_OBJECT
     private:
     public:
-        explicit MainWindow(QWidget *parent = 0);
+        explicit MainWindow(const QStringList& askKeywords, QWidget *parent = 0);
         ~MainWindow();
 
         bool addAsk(AskType ask, QString inputKey) noexcept override;

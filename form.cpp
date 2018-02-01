@@ -52,7 +52,37 @@ bool Form::insertAnswer(QString inputKey, QPair<AskTypeEnum,QVariant> answerPair
     auto iot=form_.indexOf(templateAll,0,Qt::CaseInsensitive);
     if (iot==-1)
         return false;
-    form_.replace(iot,templateAll.size(),valueToInsert);
+    static const QString inputTemplateBegin="<ANS key=\"";
+    static const QString inputTemplateEnd="\"\\>";
+    const QString inputTemplateAll=inputTemplateBegin+inputKey+inputTemplateEnd;
+    auto iotInput=form_.indexOf(inputTemplateAll,iot,Qt::CaseInsensitive);
+    if (iotInput==-1)
+        return false;
+    static const QString templateEndAll="<\\ASK>";
+    auto iotEnd=form_.indexOf(templateEndAll,iotInput,Qt::CaseInsensitive);
+    if (iotEnd==-1)
+        return false;
+    form_.replace(iotInput,inputTemplateAll.size(),valueToInsert);
+    form_.remove(iot,templateAll.size());
+    form_.remove(iotEnd,templateEndAll.size());
+    return true;
+}
+
+bool Form::noAnswer(QString inputKey) noexcept
+{
+    if (form_.isEmpty())
+            return false;
+    static const QString templateBegin="<ASK key=\"";
+    static const QString templateEnd="\">";
+    const QString templateAll=templateBegin+inputKey+templateEnd;
+    auto iot=form_.indexOf(templateAll,0,Qt::CaseInsensitive);
+    if (iot==-1)
+        return false;
+    static const QString templateEndAll="<\\ASK>";
+    auto iotEnd=form_.indexOf(templateEndAll,iot,Qt::CaseInsensitive);
+    if (iotEnd==-1)
+        return false;
+    form_.remove(iot,iotEnd-iot+1);
     return true;
 }
 
