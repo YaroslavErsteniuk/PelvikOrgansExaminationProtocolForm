@@ -18,6 +18,9 @@ MainWindow::MainWindow(const QStringList &askKeywords, QWidget *parent) :
     ui->dateOMPatientEdit->setDate(QDate::currentDate().addDays(-10));
     ui->dateFormEdit->setDate(QDate::currentDate());
     ui->datePatientEdit->setDate(QDate::currentDate());
+
+    if (!initializeWidgets(askKeywords))
+         throw InvalidInitialization("MainWindow::initializeComboBox failed");
 }
 
 MainWindow::~MainWindow()
@@ -328,3 +331,59 @@ bool MainWindow::initializeOvary(QComboBox* vizualizationOvaryComboBox, QComboBo
 
     return true;
 }
+
+ bool MainWindow::initializeWidgets(const QStringList& askKeywords) noexcept
+ {
+    auto cBeginIt=cbegin(askKeywords);
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(stringAskType,ui->snfPatientEdit)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->metodicComboBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(numberAskType,ui->yearPatientBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(dateAskType,ui->datePatientEdit)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(dateAskType,ui->dateOMPatientEdit)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->positionUterusComboBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->formUterusComboBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->conturUterusComboBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->sizeUterusBodyDoubleSpinBox1)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->sizeUterusBodyDoubleSpinBox2)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->sizeUterusBodyDoubleSpinBox3)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->volumeUterusBodyDoubleSpinBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->thicknessUterusEndometriumDoubleSpinBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->vizualizationUterusEndometriumComboBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->layersUterusEndometriumComboBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->sizeUterusCervixDoubleSpinBox1)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->sizeUterusCervixDoubleSpinBox2)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->volumeUterusCervixDoubleSpinBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->vizualizationUterusCervicusCanalComboBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->echostructureUterusCervicusCanalComboBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(stringAskType,ui->echostructureUterusCervicusCanalEdit)});
+
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->vizualizationRightOvaryComboBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->conturRightOvaryComboBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->bordersRightOvaryComboBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->sizeRightOvaryDoubleSpinBox1)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->sizeRightOvaryDoubleSpinBox2)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->sizeRightOvaryDoubleSpinBox3)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->volumeRightOvaryDoubleSpinBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(stringAskType,ui->foliculusRightOvaryEdit)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->formationRightOvaryComboBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->diametrRightOvaryDoubleSpinBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->contentsRightOvaryComboBox)});
+
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->vizualizationLeftOvaryComboBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->conturLeftOvaryComboBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->bordersLeftOvaryComboBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->sizeLeftOvaryDoubleSpinBox1)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->sizeLeftOvaryDoubleSpinBox2)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->sizeLeftOvaryDoubleSpinBox3)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->volumeRightOvaryDoubleSpinBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(stringAskType,ui->foliculusLeftOvaryEdit)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->formationLeftOvaryComboBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->diametrLeftOvaryDoubleSpinBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->contentsLeftOvaryComboBox)});
+
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->fallopianTubesPatientComboBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->liquidComboBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(stringAskType,ui->recommendationPatientEdit)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(dateAskType,ui->dateFormEdit)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(stringAskType,ui->doctorEdit)});
+ }

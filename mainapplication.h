@@ -3,6 +3,8 @@
 
 #include "abstractmainapplication.h"
 #include "mainwindow.h"
+#include "form.h"
+#include <memory>
 
 namespace PelvikOrgansExaminationProtocolForm
 {
@@ -10,10 +12,11 @@ namespace PelvikOrgansExaminationProtocolForm
     {
         Q_OBJECT
     protected:
-        MainWindow w;
+        std::unique_ptr<Form*> fromPtr;
     public:
-        explicit MainApplication(AbstractMainWindow* window, AbstractParser* parser, QObject *parent = nullptr);
-
+        explicit MainApplication(QObject *parent = nullptr);
+    protected:
+        Form* createForm() noexcept;
     signals:
 
     public slots:

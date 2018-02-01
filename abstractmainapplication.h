@@ -21,6 +21,8 @@ namespace PelvikOrgansExaminationProtocolForm
     public slots:
         virtual void toPdfForm() noexcept =0;
         virtual void printForm() noexcept =0;
+
+        virtual void show() noexcept;
     };
 }
 

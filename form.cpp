@@ -53,12 +53,12 @@ bool Form::insertAnswer(QString inputKey, QPair<AskTypeEnum,QVariant> answerPair
     if (iot==-1)
         return false;
     static const QString inputTemplateBegin="<ANS key=\"";
-    static const QString inputTemplateEnd="\"\\>";
+    static const QString inputTemplateEnd="\"/>";
     const QString inputTemplateAll=inputTemplateBegin+inputKey+inputTemplateEnd;
     auto iotInput=form_.indexOf(inputTemplateAll,iot,Qt::CaseInsensitive);
     if (iotInput==-1)
         return false;
-    static const QString templateEndAll="<\\ASK>";
+    static const QString templateEndAll="</ASK>";
     auto iotEnd=form_.indexOf(templateEndAll,iotInput,Qt::CaseInsensitive);
     if (iotEnd==-1)
         return false;

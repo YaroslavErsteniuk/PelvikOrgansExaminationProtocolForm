@@ -57,7 +57,7 @@ QString KeyParser::particularFormTemplate(bool* ok_in) noexcept
 QStringList KeyParser::mentionedAsksKeys() const noexcept
 {
     return QStringList({
-                           "nsf","typeObservation","yearObservation","oM",
+                           "nsf","typeObservation","yearPatient","yearObservation","oM",
                         "uterusDisposition","uterusForm","uterusContur",
                            "uterusSize1", "uterusSize2", "uterusSize3",
                            "uterusVolume", "endometriusThikness",
@@ -67,12 +67,12 @@ QStringList KeyParser::mentionedAsksKeys() const noexcept
                            "echostructure","echostructureOn",
                            "rightOvaryVizualization","rightOvaryContur",
                            "rightOvaryBorder","rightOvarySize1",
-                           "rightOvarySize2","rightOvarySize3",
+                           "rightOvarySize2","rightOvarySize3","rightOvaryVolume"
                            "rightOvaryFoliculus","rightOvaryFormation",
                            "rightOvaryFormationDiametre","rightOvaryFormationContent",
                            "leftOvaryVizualization","leftOvaryContur",
                            "leftOvaryBorder","leftOvarySize1",
-                           "leftOvarySize2","leftOvarySize3",
+                           "leftOvarySize2","leftOvarySize3","leftOvaryVolume"
                            "leftOvaryFoliculus","leftOvaryFormation",
                            "leftOvaryFormationDiametre","leftOvaryFormationContent",
                            "fallopianTubes","freeLiquid","recomendation",

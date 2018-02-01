@@ -12,6 +12,11 @@ AbstractMainApplication::AbstractMainApplication(AbstractMainWindow* window, Abs
         throw std::invalid_argument("Nullptr parser");
 }
 
+void AbstractMainApplication::show() noexcept
+{
+    window_->show();
+}
+
 AbstractMainApplication::~AbstractMainApplication()
 {
     delete window_;

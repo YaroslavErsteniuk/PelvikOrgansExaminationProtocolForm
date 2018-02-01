@@ -17,7 +17,7 @@ namespace PelvikOrgansExaminationProtocolForm
     {
         Q_OBJECT
     protected:
-        std::map<QString, QPair<AskTypeEnum,const QWidget*>> widgets;
+        std::map<QString, QPair<AskTypeEnum,QWidget*>> widgets;
         std::list<std::list<QWidget*> > dependentWidgets;
     public:
         explicit AbstractMainWindow(QWidget *parent = nullptr);

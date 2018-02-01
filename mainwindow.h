@@ -52,6 +52,7 @@ public:
                                          QComboBox* contentsOvaryComboBox, QDoubleSpinBox* sizeOvaryDoubleSpinBox1,
                                          QDoubleSpinBox* sizeOvaryDoubleSpinBox2, QDoubleSpinBox* sizeOvaryDoubleSpinBox3,
                                          QLineEdit* foliculusOvaryEdit, QDoubleSpinBox* diametrOvaryDoubleSpinBox) noexcept;
+        bool initializeWidgets(const QStringList& askKeywords) noexcept;
     private:
         Ui::MainWindow *ui;
     };
