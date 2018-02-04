@@ -29,7 +29,7 @@ namespace PelvikOrgansExaminationProtocolForm
          * In case of undefined inputKey return
          * QPair(AskTypeEnum::nothingAskType, QVariant())
          */
-        virtual QPair<AskType,QVariant> getAnswer(QString inputKey) const noexcept;
+        virtual QPair<AskTypeEnum,QVariant> getAnswer(QString inputKey) const noexcept;
         virtual bool isAnswer(QString inputKey) const noexcept;
 
         /* This function add some question to form.
@@ -47,14 +47,6 @@ namespace PelvikOrgansExaminationProtocolForm
          * Return true if question was created and false if not.
          */
         virtual bool addAsk(AskType ask, QString inputKey, QString askText)noexcept =0 ;
-
-        /* This function add some question to form to some group of questions.
-         * @inputKey use to identify question.
-         * Type of question's answer depend on @ask.
-         * @group represent group to what question should be added.
-         * Return true if question was created and false if not.
-         */
-        virtual bool addAsk(AskType ask, QString inputKey, QString group) noexcept =0;
 
         /* This function add some question to form to some group of questions.
          * @inputKey use to identify question.
@@ -105,11 +97,11 @@ namespace PelvikOrgansExaminationProtocolForm
         void toPdfForm();
         void printForm();
 
-        void widgetVisible(QWidget* widget_, bool isVisible_) noexcept;
-        void widgetEnable(QWidget* widget_, bool isEnabled_) noexcept;
+        void widgetVisible(QWidget* widget_, bool isVisible_);
+        void widgetEnable(QWidget* widget_, bool isEnabled_);
     protected slots:
-        virtual void setDependentWidgetsVisibility(std::list::iterator it, bool isVisible_) noexcept;
-        virtual void setDependentWidgetsEnabling(std::list::iterator it, bool isEnabled_) noexcept;
+        virtual void setDependentWidgetsVisibility(std::list<std::list<QWidget*> >::iterator it, bool isVisible_) noexcept;
+        virtual void setDependentWidgetsEnabling(std::list<std::list<QWidget*> >::iterator it, bool isEnabled_) noexcept;
     };
 }
 

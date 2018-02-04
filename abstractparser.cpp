@@ -9,7 +9,7 @@ AbstractParser::~AbstractParser()
     {}
 
 bool AbstractParser::setInputName(QString inputName) noexcept
-    { inputName_=inputName; }
+    { inputName_=inputName; return true; }
 
 QString AbstractParser::inputName() const noexcept
     { return inputName_; }

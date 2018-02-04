@@ -12,14 +12,17 @@ namespace PelvikOrgansExaminationProtocolForm
     {
         Q_OBJECT
     protected:
-        std::unique_ptr<Form*> fromPtr;
+        std::unique_ptr<Form> fromPtr;
     public:
         explicit MainApplication(QObject *parent = nullptr);
     protected:
         Form* createForm() noexcept;
+        bool setNewDataIntoForm() noexcept;
     signals:
 
     public slots:
+        virtual void toPdfForm() noexcept override;
+        virtual void printForm() noexcept override;
     };
 }
 

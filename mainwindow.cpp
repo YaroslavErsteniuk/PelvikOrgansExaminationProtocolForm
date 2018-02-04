@@ -1,5 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QComboBox>
+#include <QDoubleSpinBox>
+#include <QLineEdit>
 
 using namespace std;
 using namespace PelvikOrgansExaminationProtocolForm;
@@ -21,6 +24,9 @@ MainWindow::MainWindow(const QStringList &askKeywords, QWidget *parent) :
 
     if (!initializeWidgets(askKeywords))
          throw InvalidInitialization("MainWindow::initializeComboBox failed");
+
+   connect(ui->printPushButton,&QPushButton::click,this,&MainWindow::printForm);
+   connect(ui->pdfPushButton,&QPushButton::click,this,&MainWindow::toPdfForm);
 }
 
 MainWindow::~MainWindow()
@@ -38,12 +44,6 @@ bool MainWindow::addAsk(AskType ask, QString inputKey) noexcept
 bool MainWindow::addAsk(AskType ask, QString inputKey, QString askText) noexcept
 {
     return AbstractMainWindow::addAsk(ask, inputKey, askText);
-}
-
-//function return false and doing nothing
-bool MainWindow::addAsk(AskType ask, QString inputKey, QString group) noexcept
-{
-    return AbstractMainWindow::addAsk(ask, inputKey, group);
 }
 
 //function return false and doing nothing
@@ -193,10 +193,10 @@ bool MainWindow::initializeUterus() noexcept
                     }
                 }
         };
-    connect(ui->echostructureUterusCervicusCanalComboBox,QOverload<QString>::of(&QComboBox::currentIndexChanged),
+    connect(ui->echostructureUterusCervicusCanalComboBox,QOverload<const QString &>::of(&QComboBox::currentIndexChanged),
             echostructureDependentedWidgetsChange);
-    connect(this,MainWindow::widgetEnable,echostructureDependentedWidgetsEditableChange);
-    connect(this,MainWindow::widgetVisible,echostructureDependentedWidgetsEditableChange);
+    connect(this,&MainWindow::widgetEnable,echostructureDependentedWidgetsEditableChange);
+    connect(this,&MainWindow::widgetVisible,echostructureDependentedWidgetsEditableChange);
 
     return true;
 }
@@ -250,7 +250,7 @@ bool MainWindow::initializeOvary(QComboBox* vizualizationOvaryComboBox, QComboBo
                         }
                     }
             };
-        connect(vizualizationOvaryComboBox,QOverload<QString>::of(&QComboBox::currentIndexChanged),
+        connect(vizualizationOvaryComboBox,QOverload<const QString &>::of(&QComboBox::currentIndexChanged),
                 vizualizationDependentedWidgetsChange);
         connect(this,MainWindow::widgetEnable,vizualizationDependentedWidgetsEditableChange);
         connect(this,MainWindow::widgetVisible,vizualizationDependentedWidgetsEditableChange);
@@ -315,10 +315,10 @@ bool MainWindow::initializeOvary(QComboBox* vizualizationOvaryComboBox, QComboBo
                         }
                     }
             };
-        connect(formationOvaryComboBox,QOverload<QString>::of(&QComboBox::currentIndexChanged),
+        connect(formationOvaryComboBox,QOverload<const QString &>::of(&QComboBox::currentIndexChanged),
                 dependentedWidgetsChange);
-        connect(this,MainWindow::widgetEnable,dependentedWidgetsEditableChange);
-        connect(this,MainWindow::widgetVisible,dependentedWidgetsEditableChange);
+        connect(this,&MainWindow::widgetEnable,dependentedWidgetsEditableChange);
+        connect(this,&MainWindow::widgetVisible,dependentedWidgetsEditableChange);
     }
 
     contentsOvaryComboBox->setInsertPolicy(QComboBox::InsertAlphabetically);
@@ -375,7 +375,7 @@ bool MainWindow::initializeOvary(QComboBox* vizualizationOvaryComboBox, QComboBo
     widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->sizeLeftOvaryDoubleSpinBox1)});
     widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->sizeLeftOvaryDoubleSpinBox2)});
     widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->sizeLeftOvaryDoubleSpinBox3)});
-    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->volumeRightOvaryDoubleSpinBox)});
+    widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->volumeLeftOvaryDoubleSpinBox)});
     widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(stringAskType,ui->foliculusLeftOvaryEdit)});
     widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(enumAskType,ui->formationLeftOvaryComboBox)});
     widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(floatAskType,ui->diametrLeftOvaryDoubleSpinBox)});
@@ -386,4 +386,5 @@ bool MainWindow::initializeOvary(QComboBox* vizualizationOvaryComboBox, QComboBo
     widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(stringAskType,ui->recommendationPatientEdit)});
     widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(dateAskType,ui->dateFormEdit)});
     widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(stringAskType,ui->doctorEdit)});
+    return true;
  }

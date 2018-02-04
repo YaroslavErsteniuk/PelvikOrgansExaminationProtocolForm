@@ -29,7 +29,7 @@ namespace PelvikOrgansExaminationProtocolForm
         virtual QString getForm(bool* ok_in) const noexcept;
         virtual QString getForm(const std::map<QString, QPair<AskTypeEnum, QVariant> > &answerPairs, bool* ok_in) noexcept;
     protected:
-        virtual QString toQString(QPair<AskType, QVariant> answerPair, bool* ok_in) const noexcept;
+        virtual QString toQString(QPair<AskTypeEnum, QVariant> answerPair, bool* ok_in) const noexcept;
         virtual QString qDatetoQString(QDate d) const noexcept;
     public slots:
         virtual void createPDF() const noexcept;

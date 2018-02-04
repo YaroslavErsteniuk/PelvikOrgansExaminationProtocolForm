@@ -9,7 +9,7 @@
 
 using namespace PelvikOrgansExaminationProtocolForm;
 
-Form::Form(QString formTemplate="") noexcept: formTemplate_(formTemplate), form_(formTemplate)
+Form::Form(QString formTemplate) noexcept: formTemplate_(formTemplate), form_(formTemplate)
 {
 }
 
@@ -46,7 +46,7 @@ bool Form::insertAnswer(QString inputKey, QPair<AskTypeEnum,QVariant> answerPair
     static const QString templateEnd="\">";
     const QString templateAll=templateBegin+inputKey+templateEnd;
     bool ok=false;
-    const QString valueToInsert=toQString(answerPair,ok);
+    const QString valueToInsert=toQString(answerPair,&ok);
     if (!ok)
         return false;
     auto iot=form_.indexOf(templateAll,0,Qt::CaseInsensitive);
@@ -91,11 +91,11 @@ QString Form::getForm(bool* ok_in) const noexcept
     if (form_.isEmpty())
     {
         if (ok_in)
-            ok_in=false;
+            *ok_in=false;
         return QString();
     }
     if (ok_in)
-        ok_in=true;
+        *ok_in=true;
     return form_;
 
 }
@@ -108,26 +108,26 @@ QString Form::getForm(const std::map<QString,QPair<AskTypeEnum,QVariant> >& answ
     if (form_.isEmpty() || !ok)
     {
         if (ok_in)
-            ok_in=false;
+            *ok_in=false;
         return QString();
     }
     if (ok_in)
-        ok_in=true;
+        *ok_in=true;
     return form_;
 }
 
-QString Form::toQString(QPair<AskType, QVariant> answerPair, bool* ok_in) const noexcept
+QString Form::toQString(QPair<AskTypeEnum, QVariant> answerPair, bool* ok_in) const noexcept
 {
     if (!(answerPair.second.isValid()))
     {
         if (ok_in)
-            ok_in=false;
+            *ok_in=false;
         return QString();
     }
     bool ok=true;
     QString result;
 
-    switch (answerPair.first.askTypeValue)
+    switch (answerPair.first)
     {
     case stringAskType:
     case enumAskType: //input type for list of variants
@@ -145,7 +145,7 @@ QString Form::toQString(QPair<AskType, QVariant> answerPair, bool* ok_in) const 
         break;
     case floatAskType:
         if (answerPair.second.userType()==QMetaType::Double)
-            result=QString::number(answerPair.second.toDouble(),'f',answerPair.first.floatPrecision);
+            result=QString::number(answerPair.second.toDouble(),'f',2);
         else
             ok=false;
         break;
@@ -157,8 +157,9 @@ QString Form::toQString(QPair<AskType, QVariant> answerPair, bool* ok_in) const 
         break;
     default:
         ok=false;
-        return QString();
     }
+    *ok_in=ok;
+    return result;
 }
 
 QString Form::qDatetoQString(QDate d) const noexcept
@@ -188,7 +189,7 @@ void Form::createPDF() const noexcept
 void Form::printInPrinter() const noexcept
 {
     QPrinter printer(QPrinter::HighResolution);
-    QPrintDialog dialog(&printer, this);
+    QPrintDialog dialog(&printer);
     dialog.setOption(QAbstractPrintDialog::PrintPageRange,false);
     if (dialog.exec() != QDialog::Accepted)
         return;

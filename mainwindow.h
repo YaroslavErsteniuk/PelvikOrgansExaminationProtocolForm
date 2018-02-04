@@ -20,7 +20,7 @@ namespace PelvikOrgansExaminationProtocolForm
 class InvalidInitialization:  std::runtime_error
 {
 public:
-    explicit InvalidInitialization (const string& what_arg):  std::runtime_error(what_arg)
+    explicit InvalidInitialization (const std::string& what_arg):  std::runtime_error(what_arg)
         {}
 };
 
@@ -38,7 +38,6 @@ public:
 
         bool addAsk(AskType ask, QString inputKey) noexcept override;
         bool addAsk(AskType ask, QString inputKey, QString askText) noexcept override;
-        bool addAsk(AskType ask, QString inputKey, QString group) noexcept override;
         bool addAsk(AskType ask, QString inputKey, QString group, QString askText) noexcept override;
         bool addAsk(AskType ask, QRect place, QString inputKey) noexcept override;
         bool addAsk(AskType ask, QRect place, QString inputKey, QString askText) noexcept override;

@@ -35,7 +35,7 @@ catch (std::out_of_range)
  * In default realization
  * return false and doing nothing.
  */
-QPair<AskType, QVariant> AbstractMainWindow::getAnswer(QString inputKey) const
+QPair<AskTypeEnum, QVariant> AbstractMainWindow::getAnswer(QString inputKey) const noexcept
 try{
     auto v=widgets.at(inputKey);
 
@@ -48,55 +48,65 @@ try{
     switch (v.first)
     {
         case stringAskType:
+        {
             const QLineEdit* lineEditWidget=qobject_cast<const QLineEdit*>(v.second);
             if (!lineEditWidget)
                 throw std::logic_error(errorString);
-            return QPair(v.first, QVariant(lineEditWidget->text()));
+            return QPair<AskTypeEnum, QVariant>(v.first, QVariant(lineEditWidget->text()));
+        }
             break;
         case numberAskType:
+        {
             const QSpinBox* spinBoxWidget=qobject_cast<const QSpinBox*>(v.second);
             if (!spinBoxWidget)
                 throw std::logic_error(errorString);
-            return QPair(v.first, QVariant(spinBoxWidget->value()));
+            return QPair<AskTypeEnum, QVariant>(v.first, QVariant(spinBoxWidget->value()));
+        }
             break;
         case floatAskType:
+        {
             const QDoubleSpinBox* doubleSpinBoxWidget=qobject_cast<const QDoubleSpinBox*>(v.second);
             if (!doubleSpinBoxWidget)
                 throw std::logic_error(errorString);
-            return QPair(AskType(doubleSpinBoxWidget->decimals()), QVariant(doubleSpinBoxWidget->value()));
+            return QPair<AskTypeEnum, QVariant>(v.first, QVariant(doubleSpinBoxWidget->value()));
+        }
             break;
         case enumAskType: //input type for list of variants
+        {
             const QComboBox* comboBoxWidget=qobject_cast<const QComboBox*>(v.second);
             if (!comboBoxWidget)
                 throw std::logic_error(errorString);
-            return QPair(v.first, QVariant(comboBoxWidget->currentText()));
+            return QPair<AskTypeEnum, QVariant>(v.first, QVariant(comboBoxWidget->currentText()));
+        }
             break;
         case dateAskType:
+        {
             const QDateEdit * dateEditWidget=qobject_cast<const QDateEdit*>(v.second);
             if (!dateEditWidget)
                 throw std::logic_error(errorString);
-            return QPair(v.first, QVariant(dateEditWidget->date()));
+            return QPair<AskTypeEnum, QVariant>(v.first, QVariant(dateEditWidget->date()));
+        }
             break;
         default:
-            return QPair(nothingAskType, QVariant());
+            return QPair<AskTypeEnum, QVariant>(nothingAskType, QVariant());
     }
 
 }
 catch (std::out_of_range)
 {
-    return QPair(nothingAskType, QVariant());
+    return QPair<AskTypeEnum, QVariant>(nothingAskType, QVariant());
 }
 catch (std::invalid_argument)
 {
-    return QPair(nothingAskType, QVariant());
+    return QPair<AskTypeEnum, QVariant>(nothingAskType, QVariant());
 }
 catch (std::logic_error)
 {
-    return QPair(nothingAskType, QVariant());
+    return QPair<AskTypeEnum, QVariant>(nothingAskType, QVariant());
 }
 catch (...)
 {
-    return QPair(nothingAskType, QVariant());
+    return QPair<AskTypeEnum, QVariant>(nothingAskType, QVariant());
 }
 
 /* This function add some question to form.
@@ -106,7 +116,7 @@ catch (...)
  * In default realization
  * return false and doing nothing.
  */
-bool AbstractMainWindow::addAsk(AskType ask, QString inputKey)
+bool AbstractMainWindow::addAsk(AskType, QString) noexcept
 {
     return false;
 }
@@ -120,20 +130,7 @@ bool AbstractMainWindow::addAsk(AskType ask, QString inputKey)
  * In default realization
  * return false and doing nothing.
  */
-bool AbstractMainWindow::addAsk(AskType ask, QString inputKey, QString askText)
-{
-    return false;
-}
-
-/* This function add some question to form to some group of questions.
- * @inputKey use to identify question.
- * Type of question's answer depend on @ask.
- * @group represent group to what question should be added.
- * Return true if question was created and false if not.
- * In default realization
- * return false and doing nothing.
- */
-bool AbstractMainWindow::addAsk(AskType ask, QString inputKey, QString group)
+bool AbstractMainWindow::addAsk(AskType, QString, QString) noexcept
 {
     return false;
 }
@@ -148,7 +145,7 @@ bool AbstractMainWindow::addAsk(AskType ask, QString inputKey, QString group)
  * In default realization
  * return false and doing nothing.
  */
-bool AbstractMainWindow::addAsk(AskType ask, QString inputKey, QString group, QString askText)
+bool AbstractMainWindow::addAsk(AskType, QString, QString, QString) noexcept
 {
     return false;
 }
@@ -161,7 +158,7 @@ bool AbstractMainWindow::addAsk(AskType ask, QString inputKey, QString group, QS
  * In default realization
  * return false and doing nothing.
  */
-bool AbstractMainWindow::addAsk(AskType ask, QRect place, QString inputKey)
+bool AbstractMainWindow::addAsk(AskType, QRect, QString) noexcept
 {
     return false;
 }
@@ -176,7 +173,7 @@ bool AbstractMainWindow::addAsk(AskType ask, QRect place, QString inputKey)
  * In default realization
  * return false and doing nothing.
  */
-bool AbstractMainWindow::addAsk(AskType ask, QRect place, QString inputKey, QString askText)
+bool AbstractMainWindow::addAsk(AskType, QRect, QString, QString) noexcept
 {
     return false;
 }
@@ -187,7 +184,7 @@ bool AbstractMainWindow::addAsk(AskType ask, QRect place, QString inputKey, QStr
  * In default realization
  * return false and doing nothing.
  */
-bool AbstractMainWindow::addFormTemplate(QString htmlTempl)
+bool AbstractMainWindow::addFormTemplate(QString) noexcept
 {
     return false;
 }
@@ -198,7 +195,7 @@ bool AbstractMainWindow::addFormTemplate(QString htmlTempl)
  * In default realization
  * return false and doing nothing.
  */
-bool AbstractMainWindow::setFormTemplate(QString htmlTempl)
+bool AbstractMainWindow::setFormTemplate(QString) noexcept
 {
     return false;
 }

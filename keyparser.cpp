@@ -67,12 +67,12 @@ QStringList KeyParser::mentionedAsksKeys() const noexcept
                            "echostructure","echostructureOn",
                            "rightOvaryVizualization","rightOvaryContur",
                            "rightOvaryBorder","rightOvarySize1",
-                           "rightOvarySize2","rightOvarySize3","rightOvaryVolume"
+                           "rightOvarySize2","rightOvarySize3","rightOvaryVolume",
                            "rightOvaryFoliculus","rightOvaryFormation",
                            "rightOvaryFormationDiametre","rightOvaryFormationContent",
                            "leftOvaryVizualization","leftOvaryContur",
                            "leftOvaryBorder","leftOvarySize1",
-                           "leftOvarySize2","leftOvarySize3","leftOvaryVolume"
+                           "leftOvarySize2","leftOvarySize3","leftOvaryVolume",
                            "leftOvaryFoliculus","leftOvaryFormation",
                            "leftOvaryFormationDiametre","leftOvaryFormationContent",
                            "fallopianTubes","freeLiquid","recomendation",
