@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>989</width>
-    <height>765</height>
+    <height>637</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>10</x>
       <y>10</y>
       <width>961</width>
-      <height>661</height>
+      <height>511</height>
      </rect>
     </property>
     <property name="widgetResizable">
@@ -32,7 +32,7 @@
        <x>0</x>
        <y>0</y>
        <width>959</width>
-       <height>659</height>
+       <height>509</height>
       </rect>
      </property>
      <widget class="QLabel" name="metodikPatientLabel">
@@ -1623,8 +1623,8 @@
    <widget class="QPushButton" name="printPushButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>680</y>
+      <x>20</x>
+      <y>550</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -1636,8 +1636,8 @@
    <widget class="QPushButton" name="pdfPushButton">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>680</y>
+      <x>150</x>
+      <y>550</y>
       <width>111</width>
       <height>31</height>
      </rect>

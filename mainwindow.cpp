@@ -12,6 +12,7 @@ MainWindow::MainWindow(const QStringList &askKeywords, QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->scrollAreaWidgetContents->setMinimumSize(961,1171);
     if (!initializeComboBox())
         throw InvalidInitialization("MainWindow::initializeComboBox failed");
 
@@ -25,8 +26,8 @@ MainWindow::MainWindow(const QStringList &askKeywords, QWidget *parent) :
     if (!initializeWidgets(askKeywords))
          throw InvalidInitialization("MainWindow::initializeComboBox failed");
 
-   connect(ui->printPushButton,&QPushButton::click,this,&MainWindow::printForm);
-   connect(ui->pdfPushButton,&QPushButton::click,this,&MainWindow::toPdfForm);
+   connect(ui->printPushButton,&QPushButton::clicked,this,&MainWindow::printForm);
+   connect(ui->pdfPushButton,&QPushButton::clicked,this,&MainWindow::toPdfForm);
 }
 
 MainWindow::~MainWindow()
