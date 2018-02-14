@@ -91,6 +91,7 @@ bool MainWindow::initializeComboBox() noexcept
                     ui->bordersLeftOvaryComboBox, ui->formationLeftOvaryComboBox,
                     ui->contentsLeftOvaryComboBox, ui->sizeLeftOvaryDoubleSpinBox1,
                     ui->sizeLeftOvaryDoubleSpinBox2, ui->sizeLeftOvaryDoubleSpinBox3,
+                    ui->volumeLeftOvaryDoubleSpinBox,
                     ui->foliculusLeftOvaryEdit, ui->diametrLeftOvaryDoubleSpinBox))
         return false;
 
@@ -98,6 +99,7 @@ bool MainWindow::initializeComboBox() noexcept
                     ui->bordersRightOvaryComboBox, ui->formationRightOvaryComboBox,
                     ui->contentsRightOvaryComboBox, ui->sizeRightOvaryDoubleSpinBox1,
                     ui->sizeRightOvaryDoubleSpinBox2, ui->sizeRightOvaryDoubleSpinBox3,
+                    ui->volumeRightOvaryDoubleSpinBox,
                     ui->foliculusRightOvaryEdit, ui->diametrRightOvaryDoubleSpinBox))
         return false;
 
@@ -207,6 +209,7 @@ bool MainWindow::initializeOvary(QComboBox* vizualizationOvaryComboBox, QComboBo
                                  QComboBox*  bordersOvaryComboBox, QComboBox* formationOvaryComboBox,
                                  QComboBox* contentsOvaryComboBox, QDoubleSpinBox* sizeOvaryDoubleSpinBox1,
                                  QDoubleSpinBox* sizeOvaryDoubleSpinBox2, QDoubleSpinBox* sizeOvaryDoubleSpinBox3,
+                                 QDoubleSpinBox* volumeOvaryDoubleSpinBox,
                                  QLineEdit* foliculusOvaryEdit, QDoubleSpinBox* diametrOvaryDoubleSpinBox) noexcept
 {
     list<QWidget*> tmpList;
@@ -222,10 +225,11 @@ bool MainWindow::initializeOvary(QComboBox* vizualizationOvaryComboBox, QComboBo
         tmpList.push_back(sizeOvaryDoubleSpinBox1);
         tmpList.push_back(sizeOvaryDoubleSpinBox2);
         tmpList.push_back(sizeOvaryDoubleSpinBox3);
+        tmpList.push_back(volumeOvaryDoubleSpinBox);
         tmpList.push_back(foliculusOvaryEdit);
         tmpList.push_back(formationOvaryComboBox);
         auto vizualizationIt=dependentWidgets.insert(dependentWidgets.end(),tmpList);
-        auto vizualizationDependentedWidgetsChange=[&](const QString& comboBoxValue)
+        auto vizualizationDependentedWidgetsChange=[&,vizualizationIt, notVizualization](const QString& comboBoxValue)
         {
             if (notVizualization.contains(comboBoxValue,Qt::CaseInsensitive))
             {
@@ -236,7 +240,8 @@ bool MainWindow::initializeOvary(QComboBox* vizualizationOvaryComboBox, QComboBo
                 setDependentWidgetsEnabling(vizualizationIt,true);
             }
         };
-        auto vizualizationDependentedWidgetsEditableChange=[&](QWidget* widget_, bool isEditable_)
+        auto vizualizationDependentedWidgetsEditableChange=[&,vizualizationOvaryComboBox,
+                vizualizationIt,vizualizationDependentedWidgetsChange](QWidget* widget_, bool isEditable_)
             {
                     if (widget_==vizualizationOvaryComboBox)
                     {
@@ -282,7 +287,7 @@ bool MainWindow::initializeOvary(QComboBox* vizualizationOvaryComboBox, QComboBo
         tmpList.clear();
         tmpList.push_back(diametrOvaryDoubleSpinBox);
         auto it2=dependentWidgets.insert(dependentWidgets.end(),tmpList);
-        auto dependentedWidgetsChange=[&](const QString& comboBoxValue)
+        auto dependentedWidgetsChange=[&,echoFormation,it2,it1,giperehogeniousFormation](const QString& comboBoxValue)
         {
             if (comboBoxValue==echoFormation)
             {
@@ -300,7 +305,8 @@ bool MainWindow::initializeOvary(QComboBox* vizualizationOvaryComboBox, QComboBo
                 setDependentWidgetsEnabling(it2,false);
             }
         };
-        auto dependentedWidgetsEditableChange=[&](QWidget* widget_, bool isEditable_)
+        auto dependentedWidgetsEditableChange=[&,formationOvaryComboBox, it1, it2, dependentedWidgetsChange ]
+           (QWidget* widget_, bool isEditable_)
             {
                     if (widget_==formationOvaryComboBox)
                     {

@@ -50,6 +50,7 @@ public:
                                          QComboBox*  bordersOvaryComboBox, QComboBox* formationOvaryComboBox,
                                          QComboBox* contentsOvaryComboBox, QDoubleSpinBox* sizeOvaryDoubleSpinBox1,
                                          QDoubleSpinBox* sizeOvaryDoubleSpinBox2, QDoubleSpinBox* sizeOvaryDoubleSpinBox3,
+                                         QDoubleSpinBox* volumeOvaryDoubleSpinBox,
                                          QLineEdit* foliculusOvaryEdit, QDoubleSpinBox* diametrOvaryDoubleSpinBox) noexcept;
         bool initializeWidgets(const QStringList& askKeywords) noexcept;
     private:

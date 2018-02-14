@@ -15,7 +15,7 @@ MainApplication::MainApplication(QObject *parent) :AbstractMainApplication(new K
 
 Form* MainApplication::createForm() noexcept
 {
-    QFile templateFile("template.html");
+    QFile templateFile("template.htm");
     if (!templateFile.open(QIODevice::ReadOnly | QIODevice::Text))
         return nullptr;
     auto templateInHtml=QString(templateFile.readAll());
