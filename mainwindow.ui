@@ -1646,6 +1646,19 @@
      <string>В pdf</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="htmlPushButton">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>550</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>В html</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

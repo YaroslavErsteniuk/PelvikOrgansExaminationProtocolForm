@@ -28,6 +28,7 @@ MainWindow::MainWindow(const QStringList &askKeywords, QWidget *parent) :
 
    connect(ui->printPushButton,&QPushButton::clicked,this,&MainWindow::printForm);
    connect(ui->pdfPushButton,&QPushButton::clicked,this,&MainWindow::toPdfForm);
+   connect(ui->htmlPushButton,&QPushButton::clicked,this,&MainWindow::toHtmlForm);
 }
 
 MainWindow::~MainWindow()

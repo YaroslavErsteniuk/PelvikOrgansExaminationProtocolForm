@@ -96,6 +96,7 @@ namespace PelvikOrgansExaminationProtocolForm
 
         void toPdfForm();
         void printForm();
+        void toHtmlForm();
 
         void widgetVisible(QWidget* widget_, bool isVisible_);
         void widgetEnable(QWidget* widget_, bool isEnabled_);

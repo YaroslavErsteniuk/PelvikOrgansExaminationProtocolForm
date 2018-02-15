@@ -33,6 +33,7 @@ namespace PelvikOrgansExaminationProtocolForm
         virtual QString qDatetoQString(QDate d) const noexcept;
     public slots:
         virtual void createPDF() const noexcept;
+        virtual void createHTML() const noexcept;
         virtual void printInPrinter() const noexcept;
     };
 }

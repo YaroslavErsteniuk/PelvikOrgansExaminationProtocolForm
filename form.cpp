@@ -62,9 +62,9 @@ bool Form::insertAnswer(QString inputKey, QPair<AskTypeEnum,QVariant> answerPair
     auto iotEnd=form_.indexOf(templateEndAll,iotInput,Qt::CaseInsensitive);
     if (iotEnd==-1)
         return false;
+    form_.remove(iotEnd,templateEndAll.size());
     form_.replace(iotInput,inputTemplateAll.size(),valueToInsert);
     form_.remove(iot,templateAll.size());
-    form_.remove(iotEnd,templateEndAll.size());
     return true;
 }
 
@@ -78,7 +78,7 @@ bool Form::noAnswer(QString inputKey) noexcept
     auto iot=form_.indexOf(templateAll,0,Qt::CaseInsensitive);
     if (iot==-1)
         return false;
-    static const QString templateEndAll="<\\ASK>";
+    static const QString templateEndAll="</ASK>";
     auto iotEnd=form_.indexOf(templateEndAll,iot,Qt::CaseInsensitive);
     if (iotEnd==-1)
         return false;
@@ -184,6 +184,20 @@ void Form::createPDF() const noexcept
 
     textDoc.setPageSize(printer.pageRect(QPrinter::Millimeter).size()); // to hide the page number
     textDoc.print(&printer);
+}
+
+void Form::createHTML() const noexcept
+{
+    QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Export Html", QString(), "*.htm");
+    if (fileName.isEmpty() || (!fileName.compare(".htm",Qt::CaseInsensitive)))
+        return;
+    if (!fileName.endsWith(".htm",Qt::CaseInsensitive))
+        fileName.append(".htm");
+    QFile htmlRes(fileName);
+    if (!htmlRes.open(QFile::WriteOnly | QFile::Text))
+        return;
+    if (-1==htmlRes.write(form_.toLocal8Bit()))
+        return;
 }
 
 void Form::printInPrinter() const noexcept

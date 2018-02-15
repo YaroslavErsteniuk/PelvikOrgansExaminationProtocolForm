@@ -11,6 +11,7 @@ MainApplication::MainApplication(QObject *parent) :AbstractMainApplication(new K
     window_=new MainWindow(parser_->mentionedAsksKeys());
     connect(window_,&MainWindow::printForm,this,&MainApplication::printForm);
     connect(window_,&MainWindow::toPdfForm,this,&MainApplication::toPdfForm);
+    connect(window_,&MainWindow::toHtmlForm,this,&MainApplication::toHtmlForm);
 }
 
 Form* MainApplication::createForm() noexcept
@@ -34,6 +35,14 @@ void MainApplication::printForm() noexcept
     if (!setNewDataIntoForm())
         return;
     fromPtr->printInPrinter();
+}
+
+
+void MainApplication::toHtmlForm() noexcept
+{
+    if (!setNewDataIntoForm())
+        return;
+    fromPtr->createHTML();
 }
 
 bool MainApplication::setNewDataIntoForm() noexcept

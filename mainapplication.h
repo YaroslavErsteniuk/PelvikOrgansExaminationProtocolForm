@@ -23,6 +23,7 @@ namespace PelvikOrgansExaminationProtocolForm
     public slots:
         virtual void toPdfForm() noexcept override;
         virtual void printForm() noexcept override;
+        virtual void toHtmlForm() noexcept override;
     };
 }
 
