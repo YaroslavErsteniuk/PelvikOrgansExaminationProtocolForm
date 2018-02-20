@@ -7,6 +7,8 @@
 #include <QFileDialog>
 #include <QPrintDialog>
 
+#include <QtWebKitWidgets/QWebView>
+
 using namespace PelvikOrgansExaminationProtocolForm;
 
 Form::Form(QString formTemplate) noexcept: formTemplate_(formTemplate), form_(formTemplate)
@@ -207,8 +209,13 @@ void Form::printInPrinter() const noexcept
     dialog.setOption(QAbstractPrintDialog::PrintPageRange,false);
     if (dialog.exec() != QDialog::Accepted)
         return;
-    QTextDocument textDoc;
-    textDoc.setHtml(form_);
-    textDoc.setPageSize(printer.pageRect(QPrinter::Millimeter).size()); // to hide the page number
-    textDoc.print(&printer);
+    //QTextDocument textDoc;
+    //textDoc.setHtml(form_);
+    //textDoc.setPageSize(printer.pageRect(QPrinter::Millimeter).size()); // to hide the page number
+    //textDoc.print(&printer);
+
+    QWebView *view = new QWebView();
+    view->setHtml(form_);
+    view->print(&printer);
+    view->deleteLater();
 }

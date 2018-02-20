@@ -7,11 +7,19 @@ using namespace PelvikOrgansExaminationProtocolForm;
 
 MainApplication::MainApplication(QObject *parent) :AbstractMainApplication(new KeyParser(), parent), fromPtr(nullptr)
 {
-    fromPtr.reset(createForm());
+    fromPtr=createForm();
+    if (!fromPtr)
+        return;
     window_=new MainWindow(parser_->mentionedAsksKeys());
+
     connect(window_,&MainWindow::printForm,this,&MainApplication::printForm);
     connect(window_,&MainWindow::toPdfForm,this,&MainApplication::toPdfForm);
     connect(window_,&MainWindow::toHtmlForm,this,&MainApplication::toHtmlForm);
+}
+
+MainApplication::~MainApplication()
+{
+    delete fromPtr;
 }
 
 Form* MainApplication::createForm() noexcept
