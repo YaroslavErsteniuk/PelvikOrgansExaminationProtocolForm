@@ -30,6 +30,13 @@ namespace PelvikOrgansExaminationProtocolForm
          * QPair(AskTypeEnum::nothingAskType, QVariant())
          */
         virtual QPair<AskTypeEnum,QVariant> getAnswer(QString inputKey) const noexcept;
+
+        /* This function return whether some not-empty value
+         * can be taken from form.
+         * If form isn't enabled or visible or value is empty it return false,
+         * otherwise return true.
+         * @inputKey use to identify question.
+         */
         virtual bool isAnswer(QString inputKey) const noexcept;
 
         /* This function add some question to form.
@@ -94,14 +101,44 @@ namespace PelvikOrgansExaminationProtocolForm
          */
         void applyAnswers();
 
+        /* signal is emmited when
+         * user is trying create form's pdf-file
+         */
         void toPdfForm();
+
+        /* signal is emmited when
+         * user is trying print form
+         */
         void printForm();
+
+        /* signal is emmited when
+         * user is trying create form's html-file
+         */
         void toHtmlForm();
 
+        /* signal is emmited when
+         * visibility of widget_ is change
+         */
         void widgetVisible(QWidget* widget_, bool isVisible_);
+
+        /* signal is emmited when
+         * enabling of widget_ is change
+         */
         void widgetEnable(QWidget* widget_, bool isEnabled_);
     protected slots:
+
+        /* slot  is processing dependent widgets from the std::list<QWidget*> (*iterator)
+         * in way setting up their visibility to isVisible_
+         * @iterator is an iterator to list of widgets visibility neeeded to change
+         * @isVisible_ is new value of widgets' visibility
+         */
         virtual void setDependentWidgetsVisibility(std::list<std::list<QWidget*> >::iterator it, bool isVisible_) noexcept;
+
+        /* slot  is processing dependent widgets from the std::list<QWidget*> (*iterator)
+         * in way setting up their enabling to isEnabled_
+         * @iterator is an iterator to list of widgets enabling neeeded to change
+         * @isEnabled_ is new value of widgets' enabling
+         */
         virtual void setDependentWidgetsEnabling(std::list<std::list<QWidget*> >::iterator it, bool isEnabled_) noexcept;
     };
 }

@@ -200,6 +200,11 @@ bool AbstractMainWindow::setFormTemplate(QString) noexcept
     return false;
 }
 
+/* slot  is processing dependent widgets from the std::list<QWidget*> (*iterator)
+ * in way setting up their visibility to isVisible_
+ * @iterator is an iterator to list of widgets visibility neeeded to change
+ * @isVisible_ is new value of widgets' visibility
+ */
 void AbstractMainWindow::setDependentWidgetsVisibility(std::list<std::list<QWidget*> >::iterator it, bool isVisible_) noexcept
 {
     for (auto widget_: (*it))
@@ -209,6 +214,11 @@ void AbstractMainWindow::setDependentWidgetsVisibility(std::list<std::list<QWidg
     }
 }
 
+/* slot  is processing dependent widgets from the std::list<QWidget*> (*iterator)
+ * in way setting up their enabling to isEnabled_
+ * @iterator is an iterator to list of widgets enabling neeeded to change
+ * @isEnabled_ is new value of widgets' enabling
+ */
 void AbstractMainWindow::setDependentWidgetsEnabling(std::list<std::list<QWidget*> >::iterator it, bool isEnabled_) noexcept
 {
     for (auto widget_: (*it))

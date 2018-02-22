@@ -176,16 +176,20 @@ void Form::createPDF() const noexcept
         return;
     if (!fileName.endsWith(".pdf",Qt::CaseInsensitive))
         fileName.append(".pdf");
-    QTextDocument textDoc;
-    textDoc.setHtml(form_);
+    //QTextDocument textDoc;
+    //textDoc.setHtml(form_);
 
     QPrinter printer(QPrinter::HighResolution);
     printer.setOutputFormat(QPrinter::PdfFormat);
     printer.setPaperSize(QPrinter::A4);
     printer.setOutputFileName(fileName);
 
-    textDoc.setPageSize(printer.pageRect(QPrinter::Millimeter).size()); // to hide the page number
-    textDoc.print(&printer);
+    //textDoc.setPageSize(printer.pageRect(QPrinter::Millimeter).size()); // to hide the page number
+    //textDoc.print(&printer);
+    QWebView *view = new QWebView();
+    view->setHtml(form_);
+    view->print(&printer);
+    view->deleteLater();
 }
 
 void Form::createHTML() const noexcept
