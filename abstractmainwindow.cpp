@@ -15,6 +15,12 @@ AbstractMainWindow::AbstractMainWindow(QWidget *parent) : QMainWindow(parent)
 AbstractMainWindow::~AbstractMainWindow()
     {}
 
+/* This function return whether some not-empty value
+ * can be taken from form.
+ * If form isn't enabled or visible or value is empty it return false,
+ * otherwise return true.
+ * @inputKey use to identify question.
+ */
 bool AbstractMainWindow::isAnswer(QString inputKey) const noexcept
 try{
     auto v=widgets.at(inputKey);

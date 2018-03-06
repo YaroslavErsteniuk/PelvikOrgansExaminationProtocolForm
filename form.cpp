@@ -19,7 +19,10 @@ Form::~Form() noexcept
 {
 }
 
-bool Form::setFormTemplate(QString formTemplate) noexcept//not use "resetForm"
+/* Setter for template.
+ * To update template realisation Form::resetForm should be used explicitly.
+ */
+bool Form::setFormTemplate(QString formTemplate) noexcept
 {
     if (formTemplate.isEmpty())
         return false;
@@ -32,6 +35,9 @@ QString Form::getFormTemplate() const noexcept
     return formTemplate_;
 }
 
+/* Reset template realisation according to template.
+ * All changes would be discarted,
+ */
 bool Form::resetForm() noexcept
 {
     if (formTemplate_.isEmpty())
@@ -40,6 +46,13 @@ bool Form::resetForm() noexcept
     return true;
 }
 
+/* Insert answer in current version of template realisation.
+ * @inputKey represent the key of question,
+ * @inputKey is a pair<Type,Value>.
+ * If value is inserted return true;
+ * If value can't be converted to QString acording to Type
+ * or template haven't @inputKey return false.
+ */
 bool Form::insertAnswer(QString inputKey, QPair<AskTypeEnum,QVariant> answerPair) noexcept
 {
     if (form_.isEmpty())
@@ -70,6 +83,12 @@ bool Form::insertAnswer(QString inputKey, QPair<AskTypeEnum,QVariant> answerPair
     return true;
 }
 
+/* Should be used if question with key @inputKey haven't answer.
+ * Delete place for that answer in template.
+ * @inputKey - key for question which haven't answer.
+ * Return true if deleting was successfull,
+ * return false if template haven't @inputKey.
+ */
 bool Form::noAnswer(QString inputKey) noexcept
 {
     if (form_.isEmpty())
@@ -88,6 +107,11 @@ bool Form::noAnswer(QString inputKey) noexcept
     return true;
 }
 
+/* Function for getting current version of template realisation.
+ * @ok_in) is parameter for checking the validity of template realisation.
+ * If current version of template realisation is empty retun QString and set value of *(@ok_in) to false.
+ * Otherwise return current version of template realisation and set value of *(@ok_in) to true.
+ */
 QString Form::getForm(bool* ok_in) const noexcept
 {
     if (form_.isEmpty())
@@ -102,6 +126,15 @@ QString Form::getForm(bool* ok_in) const noexcept
 
 }
 
+/* Except for getting current version of template realisation,
+ * this version insert answers in @answerPairs using the Form::insertAnswer.
+ * @answerPairs is a map of answer in form of <Key,<Type,Value>>.
+ * @ok_in is parameter for checking the validity of template realisation.
+ * If at least one value can't be converted to QString acording to Type
+ * or template haven't Key @ok_in is set to false and function return QString().
+ * If current version of template realisation is empty retun QString and set value of *(@ok_in) to false.
+ * Otherwise return current version of template realisation and set value of *(@ok_in) to true.
+ */
 QString Form::getForm(const std::map<QString,QPair<AskTypeEnum,QVariant> >& answerPairs, bool* ok_in) noexcept
 {
     bool ok=true;
@@ -169,6 +202,11 @@ QString Form::qDatetoQString(QDate d) const noexcept
     return d.toString(Qt::ISODate);
 }
 
+/* Slot for creating pdf on template's base.
+ * Use QtWebkit and GUI for creating.
+ *
+ * TODO separate GUI-classes from functional classes.
+ */
 void Form::createPDF() const noexcept
 {
     QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Export PDF", QString(), "*.pdf");
@@ -192,6 +230,11 @@ void Form::createPDF() const noexcept
     view->deleteLater();
 }
 
+/* Slot for creating html on template's base.
+ * Use GUI-classes for creating.
+ *
+ * TODO separate GUI from functional classes.
+ */
 void Form::createHTML() const noexcept
 {
     QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Export Html", QString(), "*.htm");
@@ -206,6 +249,11 @@ void Form::createHTML() const noexcept
         return;
 }
 
+/* Slot for printing on template's base.
+ * Use QtWebkit and GUI-classes for printing.
+ *
+ * TODO separate GUI from functional classes.
+ */
 void Form::printInPrinter() const noexcept
 {
     QPrinter printer(QPrinter::HighResolution);

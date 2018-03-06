@@ -6,6 +6,7 @@ KeyParser::KeyParser():AbstractParser("")
 {
 }
 
+// Should be not used from this class
 bool KeyParser::ask(AskType& askType_in, QString& inputKey_in, QString** askText_in, QString** group_in,
     QRect** place_in) noexcept
 {
@@ -25,7 +26,9 @@ bool KeyParser::ask(AskType& askType_in, QString& inputKey_in, QString** askText
  * optionally in @ok_in if it was created or not.
  * If not the returned value is QString().
  * The default realization return QString,
- * and @ok_in=false()
+ * and @ok_in=false().
+ *
+ * Should be not used from this class
  */
 QString KeyParser::fullFormTemplate(bool* ok_in) noexcept
 {
@@ -40,6 +43,8 @@ QString KeyParser::fullFormTemplate(bool* ok_in) noexcept
  * If not the returned value is QString().
  * The default realization return QString,
  * and @ok_in=false()
+ *
+ * Should be not used from this class
  */
 QString KeyParser::particularFormTemplate(bool* ok_in) noexcept
 {
@@ -49,10 +54,9 @@ QString KeyParser::particularFormTemplate(bool* ok_in) noexcept
 }
 
 /* Get asks' keys for all question
- * that was taken from stream.
- * If there wasn't taken any keys,
- * returned QStringList().
- * The default realization return QStringList().
+ * that was used.
+ * It is the only function which return correct result.
+ * It used for redusing number of "magic" constants.
  */
 QStringList KeyParser::mentionedAsksKeys() const noexcept
 {
