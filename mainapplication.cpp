@@ -13,19 +13,16 @@ using namespace PelvikOrgansExaminationProtocolForm;
  */
 MainApplication::MainApplication(QObject *parent) :AbstractMainApplication(new KeyParser(), parent), fromPtr(nullptr)
 {
+    /*   Now this is realised in AbstractMainApplication
     fromPtr=createForm();
     if (!fromPtr)
         throw std::invalid_argument("Nullptr form");
+    */
     window_=new MainWindow(parser_->mentionedAsksKeys());
 
     connect(window_,&MainWindow::printForm,this,&MainApplication::printForm);
     connect(window_,&MainWindow::toPdfForm,this,&MainApplication::toPdfForm);
     connect(window_,&MainWindow::toHtmlForm,this,&MainApplication::toHtmlForm);
-}
-
-MainApplication::~MainApplication()
-{
-    delete fromPtr;
 }
 
 /* Realisation of factory method pattern.

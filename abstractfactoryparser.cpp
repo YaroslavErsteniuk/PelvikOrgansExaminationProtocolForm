@@ -1,17 +1,17 @@
-#include "abstractparser.h"
+#include "abstractfactoryparser.h"
 
 using namespace PelvikOrgansExaminationProtocolForm;
 
-AbstractParser::AbstractParser(QString inputName): inputName_(inputName)
+AbstractFactoryParser::AbstractFactoryParser(QString inputName): inputName_(inputName)
     {}
 
-AbstractParser::~AbstractParser()
+AbstractFactoryParser::~AbstractFactoryParser()
     {}
 
-bool AbstractParser::setInputName(QString inputName) noexcept
+bool AbstractFactoryParser::setInputName(QString inputName) noexcept
     { inputName_=inputName; return true; }
 
-QString AbstractParser::inputName() const noexcept
+QString AbstractFactoryParser::inputName() const noexcept
     { return inputName_; }
 
 /* Get new ask from input stream.
@@ -28,7 +28,7 @@ QString AbstractParser::inputName() const noexcept
  * @askType_in=AskType(),@inputKey_in=QString(),
  * and nullptr for other arguments.
  */
-bool AbstractParser::ask(AskType& askType_in, QString& inputKey_in, QString** askText_in, QString** group_in,
+bool AbstractFactoryParser::ask(AskType& askType_in, QString& inputKey_in, QString** askText_in, QString** group_in,
     QRect** place_in) noexcept
 {
     askType_in=AskType();
@@ -49,7 +49,7 @@ bool AbstractParser::ask(AskType& askType_in, QString& inputKey_in, QString** as
  * The default realization return QString,
  * and @ok_in=false()
  */
-QString AbstractParser::fullFormTemplate(bool* ok_in) noexcept
+QString AbstractFactoryParser::fullFormTemplate(bool* ok_in) noexcept
 {
     if (ok_in)
         *ok_in=false;
@@ -63,7 +63,7 @@ QString AbstractParser::fullFormTemplate(bool* ok_in) noexcept
  * The default realization return QString,
  * and @ok_in=false()
  */
-QString AbstractParser::particularFormTemplate(bool* ok_in) noexcept
+QString AbstractFactoryParser::particularFormTemplate(bool* ok_in) noexcept
 {
     if (ok_in)
         *ok_in=false;
@@ -76,7 +76,7 @@ QString AbstractParser::particularFormTemplate(bool* ok_in) noexcept
  * returned QStringList().
  * The default realization return QStringList().
  */
-QStringList AbstractParser::mentionedAsksKeys() const noexcept
+QStringList AbstractFactoryParser::mentionedAsksKeys() const noexcept
 {
     return QStringList();
 }

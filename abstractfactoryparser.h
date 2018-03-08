@@ -5,24 +5,44 @@
 #include <QRect>
 #include <QStringList>
 #include "asktype.h"
+#include "abstractform.h"
 
 namespace PelvikOrgansExaminationProtocolForm {
-    /* Class for parsing file or some another input stream
+    /* Realize patter abstract factory.
+     * Class parse file or some another input stream
      * and on this base create variaty of questions
-     * and may create form template
+     * and may create form template.
+     * Main function - create object of form-class.
      */
-    class AbstractParser
+    class AbstractFactoryParser
     {
     protected:
         QString inputName_;
     public:
-        AbstractParser(QString inputName);
-        virtual ~AbstractParser();
+        AbstractFactoryParser(QString inputName);
+        virtual ~AbstractFactoryParser();
 
         //Sometimes it may need to do some more speculation while setting inputName_
         virtual bool setInputName(QString inputName) noexcept;
         QString inputName() const noexcept;
 
+        /* Get asks' keys for all question
+         * that was taken from stream.
+         * If there wasn't taken any keys,
+         * returned QStringList().
+         * The default realization return QStringList().
+         */
+        virtual QStringList mentionedAsksKeys() const noexcept =0;
+
+        /* Main part of realisation of abstract factory pattern.
+         * Get new full form template from input stream
+         * and create the form object.
+         * Return new template or
+         * nullptr if in can't be created.
+         */
+        virtual AbstractForm* createForm() noexcept=0;
+
+    protected:
         /* Get new ask from input stream.
          * Return is there a new question,
          * and AskType of that ask in @askType_in,
@@ -57,15 +77,6 @@ namespace PelvikOrgansExaminationProtocolForm {
          * and @ok_in=false()
          */
         virtual QString particularFormTemplate(bool* ok_in) noexcept =0;
-
-        /* Get asks' keys for all question
-         * that was taken from stream.
-         * If there wasn't taken any keys,
-         * returned QStringList().
-         * The default realization return QStringList().
-         */
-        virtual QStringList mentionedAsksKeys() const noexcept =0;
-
     };
 }
 

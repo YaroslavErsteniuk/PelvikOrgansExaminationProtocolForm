@@ -3,8 +3,12 @@
 
 using namespace PelvikOrgansExaminationProtocolForm;
 
-/* If @window or @parser is nullptr
+/* Parser_ will create fromPrt.
+ * If @window or @parser is nullptr
  * constructor will throw std::invalid_argument
+ * with propriate string.
+ * If parser_ return nullptr
+ * throw std::logic_error
  * with propriate string.
  */
 AbstractMainApplication::AbstractMainApplication(AbstractMainWindow* window, AbstractParser* parser,
@@ -14,11 +18,18 @@ AbstractMainApplication::AbstractMainApplication(AbstractMainWindow* window, Abs
         throw std::invalid_argument("Nullptr main window");
     if (!parser)
         throw std::invalid_argument("Nullptr parser");
+    fromPtr=parser_->createForm();
+    if (!fromPtr)
+        throw std::logic_error("Nullptr form");
 }
 
-/* Constructor, which can be used if creation of window_ debend on parser_.
+/* Parser_ will create fromPrt.
+ * Constructor, which can be used if creation of window_ debend on parser_.
  * If @window or @parser is nullptr
  * constructor will throw std::invalid_argument
+ * with propriate string.
+ * If parser_ return nullptr
+ * throw std::logic_error
  * with propriate string.
  */
 AbstractMainApplication::AbstractMainApplication(AbstractParser* parser, QObject *parent):
@@ -26,6 +37,9 @@ AbstractMainApplication::AbstractMainApplication(AbstractParser* parser, QObject
 {
     if (!parser)
         throw std::invalid_argument("Nullptr parser");
+    fromPtr=parser_->createForm();
+    if (!fromPtr)
+        throw std::logic_error("Nullptr form");
 }
 
 /* Slot which display UI.
@@ -40,4 +54,5 @@ AbstractMainApplication::~AbstractMainApplication()
 {
     delete window_;
     delete parser_;
+    delete fromPtr;
 }

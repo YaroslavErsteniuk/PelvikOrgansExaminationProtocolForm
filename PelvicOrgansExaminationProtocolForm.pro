@@ -32,20 +32,22 @@ SOURCES += \
         mainwindow.cpp \
     mainapplication.cpp \
     abstractmainwindow.cpp \
-    abstractparser.cpp \
     abstractmainapplication.cpp \
     form.cpp \
-    keyparser.cpp
+    keyparser.cpp \
+    abstractform.cpp \
+    abstractfactoryparser.cpp
 
 HEADERS += \
         mainwindow.h \
     mainapplication.h \
     asktype.h \
     abstractmainwindow.h \
-    abstractparser.h \
     abstractmainapplication.h \
     form.h \
-    keyparser.h
+    keyparser.h \
+    abstractform.h \
+    abstractfactoryparser.h
 
 FORMS += \
         mainwindow.ui

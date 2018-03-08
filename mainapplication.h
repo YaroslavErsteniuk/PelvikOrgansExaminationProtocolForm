@@ -18,7 +18,7 @@ namespace PelvikOrgansExaminationProtocolForm
     {
         Q_OBJECT
     protected:
-        Form* fromPtr;
+        //Form* fromPtr;
     public:
         /* Connect signals from GUI-class to slots,
          * create GUI-class, parser-class and form-class.
@@ -27,15 +27,16 @@ namespace PelvikOrgansExaminationProtocolForm
          * when it's impossible to open or to read file "template.htm".
          */
         explicit MainApplication(QObject *parent = nullptr);
-        ~MainApplication() override;
     protected:
-        /* Realisation of factory method pattern.
+        /* Replaced by Abstract Factory template.
+         *
+         * Realisation of factory method pattern.
          * In this class this function try
          * to open and read file "template.htm".
          * If it can't be done return nullptr,
          * else return pointer to new Form object.
          */
-        Form* createForm() noexcept;
+        //Form* createForm() noexcept;
 
         /* This function try to reset template,
          * then take from parser all keys,

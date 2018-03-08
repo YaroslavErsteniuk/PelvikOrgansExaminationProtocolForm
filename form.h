@@ -1,7 +1,7 @@
 #ifndef FORM_H
 #define FORM_H
 
-#include <QObject>
+#include <abstractform.h>
 #include <QPair>
 #include <QVariant>
 #include <map>
@@ -12,7 +12,7 @@ namespace PelvikOrgansExaminationProtocolForm
     /* Class which represent the template for form
      * and which at the moment save current version of template realisation.
      */
-    class Form: public QObject
+    class Form: public AbstractForm
     {
         Q_OBJECT
     protected:
@@ -23,7 +23,6 @@ namespace PelvikOrgansExaminationProtocolForm
         QString form_;
     public:
         Form(QString formTemplate="") noexcept;
-        virtual ~Form() noexcept;
 
         /* Insert answer in current version of template realisation.
          * @inputKey represent the key of question,
@@ -60,7 +59,9 @@ namespace PelvikOrgansExaminationProtocolForm
          */
         virtual QString getForm(bool* ok_in) const noexcept;
 
-        /* Except for getting current version of template realisation,
+        /* Realisation moved to AbstractForm.
+         *
+         * Except for getting current version of template realisation,
          * this version insert answers in @answerPairs using the Form::insertAnswer.
          * @answerPairs is a map of answer in form of <Key,<Type,Value>>.
          * @ok_in is parameter for checking the validity of template realisation.

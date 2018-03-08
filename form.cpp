@@ -15,10 +15,6 @@ Form::Form(QString formTemplate) noexcept: formTemplate_(formTemplate), form_(fo
 {
 }
 
-Form::~Form() noexcept
-{
-}
-
 /* Setter for template.
  * To update template realisation Form::resetForm should be used explicitly.
  */
@@ -126,7 +122,9 @@ QString Form::getForm(bool* ok_in) const noexcept
 
 }
 
-/* Except for getting current version of template realisation,
+/* Realisation moved to AbstractForm.
+ *
+ * Except for getting current version of template realisation,
  * this version insert answers in @answerPairs using the Form::insertAnswer.
  * @answerPairs is a map of answer in form of <Key,<Type,Value>>.
  * @ok_in is parameter for checking the validity of template realisation.
@@ -135,7 +133,7 @@ QString Form::getForm(bool* ok_in) const noexcept
  * If current version of template realisation is empty retun QString and set value of *(@ok_in) to false.
  * Otherwise return current version of template realisation and set value of *(@ok_in) to true.
  */
-QString Form::getForm(const std::map<QString,QPair<AskTypeEnum,QVariant> >& answerPairs, bool* ok_in) noexcept
+/*QString Form::getForm(const std::map<QString,QPair<AskTypeEnum,QVariant> >& answerPairs, bool* ok_in) noexcept
 {
     bool ok=true;
     for (auto it=answerPairs.cbegin(); it!=answerPairs.cend() && ok; ++it)
@@ -149,7 +147,7 @@ QString Form::getForm(const std::map<QString,QPair<AskTypeEnum,QVariant> >& answ
     if (ok_in)
         *ok_in=true;
     return form_;
-}
+}*/
 
 QString Form::toQString(QPair<AskTypeEnum, QVariant> answerPair, bool* ok_in) const noexcept
 {

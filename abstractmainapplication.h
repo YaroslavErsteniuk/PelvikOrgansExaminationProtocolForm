@@ -3,7 +3,8 @@
 
 #include <QObject>
 #include "abstractmainwindow.h"
-#include "abstractparser.h"
+#include "abstractfactoryparser.h"
+#include "abstractform.h"
 
 namespace PelvikOrgansExaminationProtocolForm
 {
@@ -20,20 +21,30 @@ namespace PelvikOrgansExaminationProtocolForm
        /* Main functional-class - read template from some source
         * and on that base can create UI-form and template's object.
         */
-       AbstractParser* parser_;
+       AbstractFactoryParser* parser_;
+
+       AbstractForm* fromPtr;
     public:
-       /* If @window or @parser is nullptr
+       /* Parser_ will create fromPrt.
+        * If @window or @parser is nullptr
         * constructor will throw std::invalid_argument
         * with propriate string.
+        * If parser_ return nullptr
+        * throw std::logic_error
+        * with propriate string.
         */
-        AbstractMainApplication(AbstractMainWindow* window, AbstractParser* parser, QObject *parent = nullptr);
+        AbstractMainApplication(AbstractMainWindow* window, AbstractFactoryParser* parser, QObject *parent = nullptr);
 
-        /* Constructor, which can be used if creation of window_ debend on parser_.
+        /* Parser_ will create fromPrt.
+         * Constructor, which can be used if creation of window_ debend on parser_.
          * If @window or @parser is nullptr
          * constructor will throw std::invalid_argument
          * with propriate string.
+         * If parser_ return nullptr
+         * throw std::logic_error
+         * with propriate string.
          */
-        AbstractMainApplication(AbstractParser* parser, QObject *parent = nullptr);
+        AbstractMainApplication(AbstractFactoryParser* parser, QObject *parent = nullptr);
 
         virtual ~AbstractMainApplication();
     signals:

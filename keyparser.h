@@ -2,7 +2,7 @@
 #define KEYPARSER_H
 
 #include <QStringList>
-#include "abstractparser.h"
+#include "abstractfactoryparser.h"
 
 namespace PelvikOrgansExaminationProtocolForm {
 
