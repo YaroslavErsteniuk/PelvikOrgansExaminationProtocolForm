@@ -25,20 +25,22 @@ MainApplication::MainApplication(QObject *parent) :AbstractMainApplication(new K
     connect(window_,&MainWindow::toHtmlForm,this,&MainApplication::toHtmlForm);
 }
 
-/* Realisation of factory method pattern.
+/* Replaced by Abstract Factory template.
+ *
+ * Realisation of factory method pattern.
  * In this class this function try
  * to open and read file "template.htm".
  * If it can't be done return nullptr,
  * else return pointer to new Form object.
  */
-Form* MainApplication::createForm() noexcept
+/*Form* MainApplication::createForm() noexcept
 {
     QFile templateFile("template.htm");
     if (!templateFile.open(QIODevice::ReadOnly | QIODevice::Text))
         return nullptr;
     auto templateInHtml=QString(templateFile.readAll());
     return new Form(templateInHtml);
-}
+}*/
 
 /* Slot for creating pdf on template's base.
  * Before creating function try to update template according to

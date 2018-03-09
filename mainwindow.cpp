@@ -7,6 +7,11 @@
 using namespace std;
 using namespace PelvikOrgansExaminationProtocolForm;
 
+/*Initialize  predefined hard-coded input interface.
+ * GUI created by Qt-design tool.
+ * @askKEywords is a list of keywords to reduce number of "magic" constant.
+ * Should be getted from object of KeyParser class.
+ */
 MainWindow::MainWindow(const QStringList &askKeywords, QWidget *parent) :
     AbstractMainWindow(parent),
     ui(new Ui::MainWindow)

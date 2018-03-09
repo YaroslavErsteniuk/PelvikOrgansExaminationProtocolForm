@@ -1,9 +1,25 @@
 #include "keyparser.h"
+#include <QFile>
 
 using namespace PelvikOrgansExaminationProtocolForm;
 
 KeyParser::KeyParser():AbstractParser("")
 {
+}
+
+/* Main part of realisation of abstract factory pattern.
+ * This function try
+ * to open and read file "template.htm".
+ * If it can't be done return nullptr,
+ * else return pointer to new Form object.
+ */
+virtual Form* KeyParser::createForm() noexcept override
+{
+    QFile templateFile("template.htm");
+    if (!templateFile.open(QIODevice::ReadOnly | QIODevice::Text))
+        return nullptr;
+    auto templateInHtml=QString(templateFile.readAll());
+    return new Form(templateInHtml);
 }
 
 // Should be not used from this class
