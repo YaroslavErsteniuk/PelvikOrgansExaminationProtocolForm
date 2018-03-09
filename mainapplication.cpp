@@ -11,7 +11,7 @@ using namespace PelvikOrgansExaminationProtocolForm;
  * with propriate string if form can't be created:
  * when it's impossible to open or to read file "template.htm".
  */
-MainApplication::MainApplication(QObject *parent) :AbstractMainApplication(new KeyParser(), parent), fromPtr(nullptr)
+MainApplication::MainApplication(QObject *parent) :AbstractMainApplication(new KeyParser(), parent)
 {
     /*   Now this is realised in AbstractMainApplication
     fromPtr=createForm();
@@ -51,7 +51,7 @@ void MainApplication::toPdfForm() noexcept
 {
     if (!setNewDataIntoForm())
         return;
-    fromPtr->createPDF();
+    dynamic_cast<Form*>(fromPtr)->createPDF();
 }
 
 /* Slot for printing form.
@@ -63,7 +63,7 @@ void MainApplication::printForm() noexcept
 {
     if (!setNewDataIntoForm())
         return;
-    fromPtr->printInPrinter();
+    dynamic_cast<Form*>(fromPtr)->printInPrinter();
 }
 
 /* Slot for creating html on template's base.
@@ -75,7 +75,7 @@ void MainApplication::toHtmlForm() noexcept
 {
     if (!setNewDataIntoForm())
         return;
-    fromPtr->createHTML();
+    dynamic_cast<Form*>(fromPtr)->createHTML();
 }
 
 /* This function try to reset template,
@@ -86,7 +86,7 @@ void MainApplication::toHtmlForm() noexcept
  */
 bool MainApplication::setNewDataIntoForm() noexcept
 {
-    if (!fromPtr->resetForm())
+    if (!dynamic_cast<Form*>(fromPtr)->resetForm())
         return false;
     for (const auto& askKey: parser_->mentionedAsksKeys())
     {

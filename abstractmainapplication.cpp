@@ -11,7 +11,7 @@ using namespace PelvikOrgansExaminationProtocolForm;
  * throw std::logic_error
  * with propriate string.
  */
-AbstractMainApplication::AbstractMainApplication(AbstractMainWindow* window, AbstractParser* parser,
+AbstractMainApplication::AbstractMainApplication(AbstractMainWindow* window, AbstractFactoryParser* parser,
     QObject *parent) : QObject(parent), window_(window), parser_(parser)
 {
     if (!window)
@@ -32,7 +32,7 @@ AbstractMainApplication::AbstractMainApplication(AbstractMainWindow* window, Abs
  * throw std::logic_error
  * with propriate string.
  */
-AbstractMainApplication::AbstractMainApplication(AbstractParser* parser, QObject *parent):
+AbstractMainApplication::AbstractMainApplication(AbstractFactoryParser* parser, QObject *parent):
     QObject(parent), window_(nullptr), parser_(parser)
 {
     if (!parser)

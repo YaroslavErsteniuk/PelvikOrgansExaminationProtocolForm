@@ -31,7 +31,7 @@ namespace PelvikOrgansExaminationProtocolForm
          * If value can't be converted to QString acording to Type
          * or template haven't @inputKey return false.
          */
-        virtual bool insertAnswer(QString inputKey, QPair<AskTypeEnum,QVariant> inputKey) noexcept;
+        virtual bool insertAnswer(QString inputKey, QPair<AskTypeEnum,QVariant> answerPair) noexcept;
 
         /* Should be used if question with key @inputKey haven't answer.
          * Delete place for that answer in template.
@@ -70,7 +70,7 @@ namespace PelvikOrgansExaminationProtocolForm
          * If current version of template realisation is empty retun QString and set value of *(@ok_in) to false.
          * Otherwise return current version of template realisation and set value of *(@ok_in) to true.
          */
-        virtual QString getForm(const std::map<QString, QPair<AskTypeEnum, QVariant> > &answerPairs, bool* ok_in) noexcept;
+        //virtual QString getForm(const std::map<QString, QPair<AskTypeEnum, QVariant> > &answerPairs, bool* ok_in) noexcept;
     protected:
         virtual QString toQString(QPair<AskTypeEnum, QVariant> answerPair, bool* ok_in) const noexcept;
         virtual QString qDatetoQString(QDate d) const noexcept;

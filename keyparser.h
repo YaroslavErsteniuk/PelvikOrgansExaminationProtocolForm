@@ -13,7 +13,7 @@ namespace PelvikOrgansExaminationProtocolForm {
      * The only function which return correct result is mentionedAsksKeys
      * for redusing number of "magic" constants.
      */
-    class KeyParser : public AbstractParser
+    class KeyParser : public AbstractFactoryParser
     {
     protected:
 

@@ -2,12 +2,16 @@
 #define ABSTRACTFORM_H
 
 #include <QObject>
+#include <QPair>
+#include <QVariant>
+#include "asktype.h"
 
 namespace PelvikOrgansExaminationProtocolForm
 {
     // Class which represent the template for form
     class AbstractForm: public QObject
     {
+        Q_OBJECT
     public:
         virtual ~AbstractForm();
 
@@ -17,7 +21,7 @@ namespace PelvikOrgansExaminationProtocolForm
          * If value is inserted return true;
          * return false otherwise.
          */
-        virtual bool insertAnswer(QString inputKey, QPair<AskTypeEnum,QVariant> inputKey) noexcept=0;
+        virtual bool insertAnswer(QString inputKey, QPair<AskTypeEnum,QVariant> answerPair) noexcept=0;
 
         /* Should be used if question with key @inputKey haven't answer.
          * Delete place for that answer in template.

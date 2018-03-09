@@ -2,7 +2,7 @@
 
 using namespace PelvikOrgansExaminationProtocolForm;
 
-virtual AbstractForm::~AbstractForm()
+AbstractForm::~AbstractForm()
 {
 
 }
@@ -16,10 +16,10 @@ virtual AbstractForm::~AbstractForm()
  */
 QString AbstractForm::getForm(const std::map<QString, QPair<AskTypeEnum, QVariant> > &answerPairs, bool* ok_in) noexcept
 {
-    bool ok_in=true;
-    for (auto it=answerPairs.cbegin(); it!=answerPairs.cend() && ok_in; ++it)
-        ok_in=insertAnswer(it->first,it->second);
-    if (!ok_in)
+    *ok_in=true;
+    for (auto it=answerPairs.cbegin(); it!=answerPairs.cend() && *ok_in; ++it)
+        *ok_in=insertAnswer(it->first,it->second);
+    if (!(*ok_in))
     {
         return QString();
     }

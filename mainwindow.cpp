@@ -22,6 +22,7 @@ MainWindow::MainWindow(const QStringList &askKeywords, QWidget *parent) :
         throw InvalidInitialization("MainWindow::initializeComboBox failed");
 
     ui->foliculusRightOvaryEdit->setText("Візуалізуються антральні фолікули, ");
+    ui->foliculusLeftOvaryEdit->setText("Візуалізуються антральні фолікули, ");
     ui->recommendationPatientEdit->setText("огляд через 1 рік");
 
     ui->dateOMPatientEdit->setDate(QDate::currentDate().addDays(-10));
@@ -311,6 +312,7 @@ bool MainWindow::initializeOvary(QComboBox* vizualizationOvaryComboBox, QComboBo
                 setDependentWidgetsEnabling(it2,false);
             }
         };
+        dependentedWidgetsChange(formationOvaryComboBox->currentText());
         auto dependentedWidgetsEditableChange=[&,formationOvaryComboBox, it1, it2, dependentedWidgetsChange ]
            (QWidget* widget_, bool isEditable_)
             {
@@ -341,6 +343,7 @@ bool MainWindow::initializeOvary(QComboBox* vizualizationOvaryComboBox, QComboBo
                                                             "з павутиноподібним вмістом",
                                                             "з гетерогенним вмістом"
                                                         }));
+    formationOvaryComboBox->setCurrentIndex(0);
 
     return true;
 }

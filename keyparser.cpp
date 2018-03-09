@@ -3,7 +3,7 @@
 
 using namespace PelvikOrgansExaminationProtocolForm;
 
-KeyParser::KeyParser():AbstractParser("")
+KeyParser::KeyParser():AbstractFactoryParser("")
 {
 }
 
@@ -13,7 +13,7 @@ KeyParser::KeyParser():AbstractParser("")
  * If it can't be done return nullptr,
  * else return pointer to new Form object.
  */
-virtual Form* KeyParser::createForm() noexcept override
+Form* KeyParser::createForm() noexcept
 {
     QFile templateFile("template.htm");
     if (!templateFile.open(QIODevice::ReadOnly | QIODevice::Text))
