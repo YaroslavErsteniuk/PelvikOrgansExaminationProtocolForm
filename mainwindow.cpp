@@ -3,6 +3,13 @@
 #include <QComboBox>
 #include <QDoubleSpinBox>
 #include <QLineEdit>
+#include <QtPrintSupport/qtprintsupportglobal.h>
+#include <QTextDocument>
+#include <QPrinter>
+#include <QFileDialog>
+#include <QPrintDialog>
+
+#include <QtWebKitWidgets/QWebView>
 
 using namespace std;
 using namespace PelvikOrgansExaminationProtocolForm;
@@ -403,4 +410,60 @@ bool MainWindow::initializeOvary(QComboBox* vizualizationOvaryComboBox, QComboBo
     widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(dateAskType,ui->dateFormEdit)});
     widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(stringAskType,ui->doctorEdit)});
     return true;
+ }
+
+ /* Slot for creating pdf on template's base.
+  * Use QtWebkit and GUI for creating.
+  */
+ void MainWindow::createPDF(QString form_) const noexcept
+ {
+     QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Export PDF", QString(), "*.pdf");
+     if (fileName.isEmpty() || (!fileName.compare(".pdf",Qt::CaseInsensitive)))
+         return;
+     if (!fileName.endsWith(".pdf",Qt::CaseInsensitive))
+         fileName.append(".pdf");
+
+     QPrinter printer(QPrinter::HighResolution);
+     printer.setOutputFormat(QPrinter::PdfFormat);
+     printer.setPaperSize(QPrinter::A4);
+     printer.setOutputFileName(fileName);
+
+     QWebView *view = new QWebView();
+     view->setHtml(form_);
+     view->print(&printer);
+     view->deleteLater();
+ }
+
+ /* Slot for creating html on template's base.
+  * Use GUI-classes for creating.
+  */
+ void MainWindow::createHTML(QString form_) const noexcept
+ {
+     QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Export Html", QString(), "*.htm");
+     if (fileName.isEmpty() || (!fileName.compare(".htm",Qt::CaseInsensitive)))
+         return;
+     if (!fileName.endsWith(".htm",Qt::CaseInsensitive))
+         fileName.append(".htm");
+     QFile htmlRes(fileName);
+     if (!htmlRes.open(QFile::WriteOnly | QFile::Text))
+         return;
+     if (-1==htmlRes.write(form_.toLocal8Bit()))
+         return;
+ }
+
+ /* Slot for printing on template's base.
+  * Use QtWebkit and GUI-classes for printing.
+  */
+ void MainWindow::printInPrinter(QString form_) const noexcept
+ {
+     QPrinter printer(QPrinter::HighResolution);
+     QPrintDialog dialog(&printer);
+     dialog.setOption(QAbstractPrintDialog::PrintPageRange,false);
+     if (dialog.exec() != QDialog::Accepted)
+         return;
+
+     QWebView *view = new QWebView();
+     view->setHtml(form_);
+     view->print(&printer);
+     view->deleteLater();
  }

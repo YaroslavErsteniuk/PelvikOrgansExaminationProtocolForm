@@ -50,7 +50,7 @@ namespace PelvikOrgansExaminationProtocolForm
         /* Reset template realisation according to template.
          * All changes would be discarted,
          */
-        virtual bool resetForm() noexcept;
+        virtual bool resetForm() noexcept override;
 
         /* Function for getting current version of template realisation.
          * @ok_in is parameter for checking the validity of template realisation.
@@ -75,26 +75,32 @@ namespace PelvikOrgansExaminationProtocolForm
         virtual QString toQString(QPair<AskTypeEnum, QVariant> answerPair, bool* ok_in) const noexcept;
         virtual QString qDatetoQString(QDate d) const noexcept;
     public slots:
-        /* Slot for creating pdf on template's base.
+        /* Not used
+         *
+         * Slot for creating pdf on template's base.
          * Use QtWebkit and GUI-classes for creating.
          *
          * TODO separate GUI from functional classes.
          */
-        virtual void createPDF() const noexcept;
+        //virtual void createPDF() const noexcept;
 
-        /* Slot for creating html on template's base.
+        /* Not used
+         *
+         * Slot for creating html on template's base.
          * Use GUI-classes for creating.
          *
          * TODO separate GUI from functional classes.
          */
-        virtual void createHTML() const noexcept;
+        //virtual void createHTML() const noexcept;
 
-        /* Slot for printing on template's base.
+        /* Not used
+         *
+         * Slot for printing on template's base.
          * Use QtWebkit and GUI-classes for printing.
          *
          * TODO separate GUI from functional classes.
          */
-        virtual void printInPrinter() const noexcept;
+        //virtual void printInPrinter() const noexcept;
     };
 }
 

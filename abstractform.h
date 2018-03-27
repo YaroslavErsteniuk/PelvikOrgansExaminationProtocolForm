@@ -44,6 +44,11 @@ namespace PelvikOrgansExaminationProtocolForm
          * the template is consider to be invalid.
          */
         QString getForm(const std::map<QString, QPair<AskTypeEnum, QVariant> > &answerPairs, bool* ok_in) noexcept;
+
+        /* Reset template realisation according to template.
+         * All changes would be discarted,
+         */
+        virtual bool resetForm() noexcept=0;
     };
 }
 

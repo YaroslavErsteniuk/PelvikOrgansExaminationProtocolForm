@@ -50,19 +50,39 @@ namespace PelvikOrgansExaminationProtocolForm
     signals:
 
     public slots:
+        /* This function try to reset template,
+         * then read answers from UI and add them to template.
+         * If an error occured while doing this return false,
+         * on success return true.
+         */
+        virtual bool setNewDataIntoForm() noexcept =0;
+
+        //Moved to UI
         //Slot for creating pdf on template's base
-        virtual void toPdfForm() noexcept =0;
+        //virtual void toPdfForm() noexcept =0;
 
+        //Moved to UI
         //slot for printing form
-        virtual void printForm() noexcept =0;
+        //virtual void printForm() noexcept =0;
 
+        //Moved to UI
         //slot for creating html on template's base
-        virtual void toHtmlForm() noexcept=0;
+        //virtual void toHtmlForm() noexcept=0;
 
         /* Slot which display UI.
          * In defaul version just invoke window_->show().
          */
         virtual void show() noexcept;
+
+        /* Get version of form,
+         * in which answers have been inserted.
+         * @answerPairs is a map of answer in form of <Key,<Type,Value>>.
+         * @ok_in is parameter for checking the validity of template realisation.
+         * If at least one value can't be converted or inserted
+         * the template is consider to be invalid.
+         * Default realisation use AbstractForm::getForm.
+         */
+        virtual QString getForm(const std::map<QString, QPair<AskTypeEnum, QVariant> > &answerPairs, bool* ok_in) noexcept;
     };
 }
 

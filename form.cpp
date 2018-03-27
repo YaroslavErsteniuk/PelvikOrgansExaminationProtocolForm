@@ -204,7 +204,7 @@ QString Form::qDatetoQString(QDate d) const noexcept
  * Use QtWebkit and GUI for creating.
  *
  * TODO separate GUI-classes from functional classes.
- */
+ *//*
 void Form::createPDF() const noexcept
 {
     QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Export PDF", QString(), "*.pdf");
@@ -226,13 +226,13 @@ void Form::createPDF() const noexcept
     view->setHtml(form_);
     view->print(&printer);
     view->deleteLater();
-}
+}*/
 
 /* Slot for creating html on template's base.
  * Use GUI-classes for creating.
  *
  * TODO separate GUI from functional classes.
- */
+ *//*
 void Form::createHTML() const noexcept
 {
     QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Export Html", QString(), "*.htm");
@@ -245,13 +245,13 @@ void Form::createHTML() const noexcept
         return;
     if (-1==htmlRes.write(form_.toLocal8Bit()))
         return;
-}
+}*/
 
 /* Slot for printing on template's base.
  * Use QtWebkit and GUI-classes for printing.
  *
  * TODO separate GUI from functional classes.
- */
+ *//*
 void Form::printInPrinter() const noexcept
 {
     QPrinter printer(QPrinter::HighResolution);
@@ -268,4 +268,4 @@ void Form::printInPrinter() const noexcept
     view->setHtml(form_);
     view->print(&printer);
     view->deleteLater();
-}
+}*/

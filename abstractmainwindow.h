@@ -94,6 +94,9 @@ namespace PelvikOrgansExaminationProtocolForm
          * Return true if setting was succesfull and false if not.
          */
         virtual bool setFormTemplate(QString htmlTempl) noexcept =0;
+
+    protected:
+        virtual bool createActions() noexcept =0;
     signals:
         /* signal is emmited when
          * user is thinking all answers is right
@@ -101,20 +104,26 @@ namespace PelvikOrgansExaminationProtocolForm
          */
         void applyAnswers();
 
-        /* signal is emmited when
+        /*Not used
+         *
+         *  signal is emmited when
          * user is trying create form's pdf-file
          */
-        void toPdfForm();
+        //void toPdfForm();
 
-        /* signal is emmited when
+        /* Not used
+         *
+         *  signal is emmited when
          * user is trying print form
          */
-        void printForm();
+        //void printForm();
 
-        /* signal is emmited when
+        /* Not used
+         *
+         * signal is emmited when
          * user is trying create form's html-file
          */
-        void toHtmlForm();
+        //void toHtmlForm();
 
         /* signal is emmited when
          * visibility of widget_ is change

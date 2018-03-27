@@ -106,6 +106,21 @@ public:
          * On error will return false, otherwise return true.
          */
         bool initializeWidgets(const QStringList& askKeywords) noexcept;
+    public slots:
+        /* Slot for creating pdf on template's base.
+         * Use QtWebkit and GUI-classes for creating.
+         */
+        virtual void createPDF(QString form_) const noexcept;
+
+        /* Slot for creating html on template's base.
+         * Use GUI-classes for creating.
+         */
+        virtual void createHTML(QString form_) const noexcept;
+
+        /* Slot for printing on template's base.
+         * Use QtWebkit and GUI-classes for printing.
+         */
+        virtual void printInPrinter(QString form_) const noexcept;
     private:
         Ui::MainWindow *ui;
     };

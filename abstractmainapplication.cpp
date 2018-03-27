@@ -56,3 +56,17 @@ AbstractMainApplication::~AbstractMainApplication()
     delete parser_;
     delete fromPtr;
 }
+
+/* Get version of form,
+ * in which answers have been inserted.
+ * @answerPairs is a map of answer in form of <Key,<Type,Value>>.
+ * @ok_in is parameter for checking the validity of template realisation.
+ * If at least one value can't be converted or inserted
+ * the template is consider to be invalid.
+ * Default realisation use AbstractForm::getForm.
+ */
+QString AbstractMainApplication::getForm(const std::map<QString, QPair<AskTypeEnum, QVariant> >
+                                         &answerPairs, bool* ok_in) noexcept
+{
+    return fromPtr->getForm(answerPairs,ok_in);
+}

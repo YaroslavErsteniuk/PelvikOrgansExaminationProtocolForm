@@ -37,37 +37,43 @@ namespace PelvikOrgansExaminationProtocolForm
          * else return pointer to new Form object.
          */
         //Form* createForm() noexcept;
+    signals:
 
+    public slots:
         /* This function try to reset template,
          * then take from parser all keys,
          * read from GUI answers and add them to template.
          * If an error occured while doing this return false,
          * on success return true.
          */
-        bool setNewDataIntoForm() noexcept;
-    signals:
+        virtual bool setNewDataIntoForm() noexcept override;
 
-    public slots:
-        /* Slot for creating pdf on template's base.
+        /* Moved to GUI.
+         *
+         * Slot for creating pdf on template's base.
          * Before creating function try to update template according to
          * data, inputed to GUI.
          * If updating is impossible, creating canceled.
          */
-        virtual void toPdfForm() noexcept override;
+        //virtual void toPdfForm() noexcept override;
 
-        /* Slot for printing form.
+        /* Moved to GUI.
+         *
+         * Slot for printing form.
          * Before printing function try to update template according to
          * data, inputed to GUI.
          * If updating is impossible, printing canceled.
          */
-        virtual void printForm() noexcept override;
+        //virtual void printForm() noexcept override;
 
-        /* Slot for creating html on template's base.
+        /* Moved to GUI.
+         *
+         * Slot for creating html on template's base.
          * Before creating function try to update template according to
          * data, inputed to GUI.
          * If updating is impossible, creating canceled.
          */
-        virtual void toHtmlForm() noexcept override;
+        //virtual void toHtmlForm() noexcept override;
     };
 }
 

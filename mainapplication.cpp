@@ -5,8 +5,7 @@
 
 using namespace PelvikOrgansExaminationProtocolForm;
 
-/* Connect signals from GUI-class to slots,
- * create GUI-class, parser-class and form-class.
+/* Create GUI-class, parser-class and form-class.
  * constructor will throw std::invalid_argument
  * with propriate string if form can't be created:
  * when it's impossible to open or to read file "template.htm".
@@ -20,9 +19,10 @@ MainApplication::MainApplication(QObject *parent) :AbstractMainApplication(new K
     */
     window_=new MainWindow(parser_->mentionedAsksKeys());
 
-    connect(window_,&MainWindow::printForm,this,&MainApplication::printForm);
+    /* Not this is removed to MainWindow
+     * connect(window_,&MainWindow::printForm,this,&MainApplication::printForm);
     connect(window_,&MainWindow::toPdfForm,this,&MainApplication::toPdfForm);
-    connect(window_,&MainWindow::toHtmlForm,this,&MainApplication::toHtmlForm);
+    connect(window_,&MainWindow::toHtmlForm,this,&MainApplication::toHtmlForm);*/
 }
 
 /* Replaced by Abstract Factory template.
@@ -42,41 +42,50 @@ MainApplication::MainApplication(QObject *parent) :AbstractMainApplication(new K
     return new Form(templateInHtml);
 }*/
 
-/* Slot for creating pdf on template's base.
+
+/* Moved to GUI.
+ *
+ * Slot for creating pdf on template's base.
  * Before creating function try to update template according to
  * data, inputed to GUI.
  * If updating is impossible, creating canceled.
  */
-void MainApplication::toPdfForm() noexcept
+/*void MainApplication::toPdfForm() noexcept
 {
     if (!setNewDataIntoForm())
         return;
     dynamic_cast<Form*>(fromPtr)->createPDF();
-}
+}*/
 
-/* Slot for printing form.
+
+/* Moved to GUI.
+ *
+ * Slot for printing form.
  * Before printing function try to update template according to
  * data, inputed to GUI.
  * If updating is impossible, printing canceled.
  */
-void MainApplication::printForm() noexcept
+/*void MainApplication::printForm() noexcept
 {
     if (!setNewDataIntoForm())
         return;
     dynamic_cast<Form*>(fromPtr)->printInPrinter();
-}
+}*/
 
-/* Slot for creating html on template's base.
+
+/* Moved to GUI.
+ *
+ * Slot for creating html on template's base.
  * Before creating function try to update template according to
  * data, inputed to GUI.
  * If updating is impossible, creating canceled.
  */
-void MainApplication::toHtmlForm() noexcept
+/*void MainApplication::toHtmlForm() noexcept
 {
     if (!setNewDataIntoForm())
         return;
     dynamic_cast<Form*>(fromPtr)->createHTML();
-}
+}*/
 
 /* This function try to reset template,
  * then take from parser all keys,
@@ -86,7 +95,7 @@ void MainApplication::toHtmlForm() noexcept
  */
 bool MainApplication::setNewDataIntoForm() noexcept
 {
-    if (!dynamic_cast<Form*>(fromPtr)->resetForm())
+    if (fromPtr->resetForm())
         return false;
     for (const auto& askKey: parser_->mentionedAsksKeys())
     {
