@@ -37,7 +37,8 @@ SOURCES += \
     keyparser.cpp \
     abstractform.cpp \
     abstractfactoryparser.cpp \
-    abstracmyactionpool.cpp
+    abstracmyactionpool.cpp \
+    saveactionpool.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -49,7 +50,8 @@ HEADERS += \
     keyparser.h \
     abstractform.h \
     abstractfactoryparser.h \
-    abstracmyactionpool.h
+    abstracmyactionpool.h \
+    saveactionpool.h
 
 FORMS += \
         mainwindow.ui

@@ -74,6 +74,12 @@ namespace PelvikOrgansExaminationProtocolForm
          */
         virtual void show() noexcept;
 
+        /* Function for getting current version of template realisation.
+         * @ok_in is parameter for checking the validity of template realisation.
+         * Default realisation use AbstractForm::getForm.
+         */
+        virtual QString getForm(bool* ok_in) const noexcept;
+
         /* Get version of form,
          * in which answers have been inserted.
          * @answerPairs is a map of answer in form of <Key,<Type,Value>>.
