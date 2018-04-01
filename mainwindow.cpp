@@ -42,6 +42,12 @@ MainWindow::MainWindow(const QStringList &askKeywords, QWidget *parent) :
    connect(ui->printPushButton,&QPushButton::clicked,this,&MainWindow::printForm);
    connect(ui->pdfPushButton,&QPushButton::clicked,this,&MainWindow::toPdfForm);
    connect(ui->htmlPushButton,&QPushButton::clicked,this,&MainWindow::toHtmlForm);
+
+   if (!fileMenu)
+   {
+       fileMenu=new QMenu(tr("File"), this);
+   }
+   menuBar()->addMenu(fileMenu);
 }
 
 MainWindow::~MainWindow()
@@ -410,4 +416,16 @@ bool MainWindow::initializeOvary(QComboBox* vizualizationOvaryComboBox, QComboBo
     widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(dateAskType,ui->dateFormEdit)});
     widgets.insert({*(cBeginIt++),QPair<AskTypeEnum,QWidget*>(stringAskType,ui->doctorEdit)});
     return true;
+ }
+
+ /* Function for registering @action in UI.
+  * If registering is impossible return false
+  * else return true.
+  */
+ bool MainWindow::registerAction(MyAction *action) noexcept override
+ //Add action in the menu and for some of them add a shortcut
+ {
+    if (!fileMenu)
+       fileMenu=new QMenu(tr("File"), this);
+     fileMenu->addAction(action);
  }

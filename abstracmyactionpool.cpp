@@ -54,7 +54,7 @@ void AbstracMyActionPool::startFromBegining() noexcept
  * or, as it is the same,
  * count of different actions.
  */
-template <class T> auto AbstracMyActionPool<T>::startFromBegining() noexcept ->
+template <class T> auto AbstracMyActionPool<T>::actionCount() noexcept ->
     decltype(std::vector<T*>::size())
 {
     return actions.size();

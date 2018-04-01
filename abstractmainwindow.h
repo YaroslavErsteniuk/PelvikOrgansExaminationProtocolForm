@@ -6,6 +6,7 @@
 #include <map>
 #include <list>
 #include "asktype.h"
+#include "abstracmyactionpool.h"
 
 namespace PelvikOrgansExaminationProtocolForm
 {
@@ -22,6 +23,14 @@ namespace PelvikOrgansExaminationProtocolForm
     public:
         explicit AbstractMainWindow(QWidget *parent = nullptr);
         virtual ~AbstractMainWindow();
+
+        /* get actions from @pool and register them.
+         * In this realisation if at least one action is nullptr
+         * or don't registered return false,
+         * in success return true.
+         * If there isn't any action return false too.
+         */
+        virtual bool createActions(AbstracMyActionPool* pool) noexcept;
 
         /* This function return some value from form.
          * @inputKey use to identify question.
@@ -96,7 +105,11 @@ namespace PelvikOrgansExaminationProtocolForm
         virtual bool setFormTemplate(QString htmlTempl) noexcept =0;
 
     protected:
-        virtual bool createActions() noexcept =0;
+        /* pure virtual function for registering @action in UI.
+         * If registering is impossible return false
+         * else return true.
+         */
+        virtual bool registerAction(MyAction* action) noexcept =0;
     signals:
         /* signal is emmited when
          * user is thinking all answers is right

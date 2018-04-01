@@ -3,8 +3,10 @@
 
 #include <QString>
 #include <vector>
+#include <QMenu>
 #include "abstractmainwindow.h"
 #include <stdexcept>
+#include "abstracmyactionpool.h"
 
 namespace Ui {
     class MainWindow;
@@ -31,7 +33,8 @@ public:
     class MainWindow : public AbstractMainWindow
     {
         Q_OBJECT
-    private:
+    protected:
+        QMenu* fileMenu;
     public:
         /*Initialize  predefined hard-coded input interface.
          * GUI created by Qt-design tool.
@@ -76,6 +79,11 @@ public:
          */
         bool setFormTemplate(QString htmlTempl) noexcept override;
     protected:
+        /* Function for registering @action in UI.
+         * If registering is impossible return false
+         * else return true.
+         */
+        virtual bool registerAction(MyAction* action) noexcept override;
 
         /* One-time-used function for structuring code.
          * Initialise all comboboxes and set the dependencies.

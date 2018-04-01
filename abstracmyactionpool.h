@@ -58,13 +58,13 @@ namespace PelvikOrgansExaminationProtocolForm
         /* reset internal iterator
          * and start obtaining actions from first.
          */
-        virtual auto startFromBegining() noexcept -> decltype(std::vector<T*>::size());
+        virtual auto actionCount() noexcept -> decltype(std::vector<T*>::size());
 
         /* return size of pool,
          * or, as it is the same,
          * count of different actions.
          */
-        virtual unsigned int actionCount() noexcept;
+        virtual void startFromBegining() noexcept;
 
         // return whether it is last action in pool or not.
         virtual bool nextActionExist() noexcept;

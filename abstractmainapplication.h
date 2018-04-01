@@ -78,7 +78,7 @@ namespace PelvikOrgansExaminationProtocolForm
          * @ok_in is parameter for checking the validity of template realisation.
          * Default realisation use AbstractForm::getForm.
          */
-        virtual QString getForm(bool* ok_in) const noexcept;
+        virtual QString getForm(bool* ok_in=nullptr) const noexcept;
 
         /* Get version of form,
          * in which answers have been inserted.
@@ -88,7 +88,7 @@ namespace PelvikOrgansExaminationProtocolForm
          * the template is consider to be invalid.
          * Default realisation use AbstractForm::getForm.
          */
-        virtual QString getForm(const std::map<QString, QPair<AskTypeEnum, QVariant> > &answerPairs, bool* ok_in) noexcept;
+        virtual QString getForm(const std::map<QString, QPair<AskTypeEnum, QVariant> > &answerPairs, bool* ok_in=nullptr) noexcept;
     };
 }
 

@@ -97,7 +97,35 @@ void printInPrinter::process() noexcept
     view->deleteLater();
 }
 
-SaveActionPool::SaveActionPool()
+/* Create pool, which includes
+ * printInPrinter, CreateHTMLAction and CreatePDFAction.
+ * AbstractMainApplication object is needed be actions objects
+ */
+SaveActionPool::SaveActionPool(AbstractMainApplication* apl)
 {
+    auto actionPDF=new CreatePDFAction(tr("Import to pdf..."));
+    actionPDF->setShortcuts(QKeySequence::Save);
+    actionPDF->setAplication(apl);
+    actions.push_back(actionPDF);
 
+    auto actionHTML=new CreateHTMLAction(tr("Import to html..."));
+    actionHTML->setShortcuts(tr("Ctrl+h"));
+    actionHTML->setAplication(apl);
+    actions.push_back(actionHTML);
+
+    auto actionPrint=new printInPrinter(tr("Print..."));
+    actionPrint->setShortcuts(QKeySequence::Print);
+    actionPrint->setAplication(apl);
+    actions.push_back(actionPrint);
+
+    it_=actions.begin();
+}
+
+//delete all actions in pool
+SaveActionPool::~SaveActionPool() override
+{
+    for (auto ac : actions)
+    {
+        delete ac;
+    }
 }

@@ -15,6 +15,28 @@ AbstractMainWindow::AbstractMainWindow(QWidget *parent) : QMainWindow(parent)
 AbstractMainWindow::~AbstractMainWindow()
     {}
 
+/* get actions from @pool and register them.
+ * In this realisation if at least one action is nullptr
+ * or don't registered return false,
+ * in success return true.
+ * If there isn't any action return false too.
+ */
+bool AbstractMainWindow::createActions(AbstracMyActionPool* pool) noexcept
+{
+    if (pool->actionCount()==0)
+        return false;
+    pool->startFromBegining();
+    while( pool->nextActionExist())
+    {
+        auto ac=pool->getNextAction();
+        if (!ac)
+            return false;
+        if (!registerAction(ac))
+            return false;
+    }
+    return true;
+}
+
 /* This function return whether some not-empty value
  * can be taken from form.
  * If form isn't enabled or visible or value is empty it return false,

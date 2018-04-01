@@ -6,6 +6,7 @@
 
 namespace PelvikOrgansExaminationProtocolForm
 {
+    //Action for creating pdf from form
     class CreatePDFAction:MyAction
     {
         Q_OBJECT
@@ -32,6 +33,7 @@ namespace PelvikOrgansExaminationProtocolForm
         virtual void process() noexcept override;
     };
 
+    //Action for creating html from form
     class CreateHTMLAction:MyAction
     {
         Q_OBJECT
@@ -58,6 +60,8 @@ namespace PelvikOrgansExaminationProtocolForm
         virtual void process() noexcept override;
     };
 
+
+    //Action for printing from form
     class printInPrinter:MyAction
     {
         Q_OBJECT
@@ -87,7 +91,13 @@ namespace PelvikOrgansExaminationProtocolForm
     class SaveActionPool : public AbstracMyActionPool
     {
     public:
+        /* Create pool, which includes
+         * printInPrinter, CreateHTMLAction and CreatePDFAction.
+         * AbstractMainApplication object is needed be actions objects
+         */
         SaveActionPool(AbstractMainApplication* apl);
+
+        //delete all actions in pool
         virtual ~SaveActionPool() override;
     };
 }
