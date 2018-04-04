@@ -2,6 +2,7 @@
 #include <QFile>
 #include "mainwindow.h"
 #include "keyparser.h"
+#include "saveactionpool.h"
 
 using namespace PelvikOrgansExaminationProtocolForm;
 
@@ -18,6 +19,8 @@ MainApplication::MainApplication(QObject *parent) :AbstractMainApplication(new K
         throw std::invalid_argument("Nullptr form");
     */
     window_=new MainWindow(parser_->mentionedAsksKeys());
+    auto savePool=new SaveActionPool(this);
+    window_->createActions(savePool);
 
     /* Not this is removed to MainWindow
      * connect(window_,&MainWindow::printForm,this,&MainApplication::printForm);

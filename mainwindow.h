@@ -85,6 +85,12 @@ public:
          */
         virtual bool registerAction(MyAction* action) noexcept override;
 
+        /* Function for ending registration of actions in UI.
+         * If all ok return true, otherwise return false.
+         * Used for adding a menu to main window.
+         */
+        virtual bool allActionsRegistered() noexcept override;
+
         /* One-time-used function for structuring code.
          * Initialise all comboboxes and set the dependencies.
          * On error will return false, otherwise return true.

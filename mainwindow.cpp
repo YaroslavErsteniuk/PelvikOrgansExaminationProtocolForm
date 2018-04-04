@@ -429,3 +429,13 @@ bool MainWindow::initializeOvary(QComboBox* vizualizationOvaryComboBox, QComboBo
        fileMenu=new QMenu(tr("File"), this);
      fileMenu->addAction(action);
  }
+
+ /* Function for ending registration of actions in UI.
+  * If all ok return true, otherwise return false.
+  * Used for adding a menu to main window.
+  */
+ bool MainWindow::allActionsRegistered() noexcept override
+ {
+     ui->menuBar->addMenu(fileMenu);
+     return true;
+ }

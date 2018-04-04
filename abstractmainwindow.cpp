@@ -34,7 +34,7 @@ bool AbstractMainWindow::createActions(AbstracMyActionPool* pool) noexcept
         if (!registerAction(ac))
             return false;
     }
-    return true;
+    return allActionsRegistered();
 }
 
 /* This function return whether some not-empty value
