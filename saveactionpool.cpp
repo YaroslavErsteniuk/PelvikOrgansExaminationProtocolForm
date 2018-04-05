@@ -101,19 +101,19 @@ void printInPrinter::process() noexcept
  * printInPrinter, CreateHTMLAction and CreatePDFAction.
  * AbstractMainApplication object is needed be actions objects
  */
-SaveActionPool::SaveActionPool(AbstractMainApplication* apl)
+SaveActionPool::SaveActionPool(AbstractMainApplication* apl): AbstracActionPool<MyAction>()
 {
-    auto actionPDF=new CreatePDFAction(tr("Import to pdf..."));
+    auto actionPDF=new CreatePDFAction(QObject::tr("Import to pdf..."));
     actionPDF->setShortcuts(QKeySequence::Save);
     actionPDF->setAplication(apl);
     actions.push_back(actionPDF);
 
-    auto actionHTML=new CreateHTMLAction(tr("Import to html..."));
-    actionHTML->setShortcuts(tr("Ctrl+h"));
+    auto actionHTML=new CreateHTMLAction(QObject::tr("Import to html..."));
+    actionHTML->setShortcuts(QList<QKeySequence>({QKeySequence(QObject::tr("Ctrl+h"))}));
     actionHTML->setAplication(apl);
     actions.push_back(actionHTML);
 
-    auto actionPrint=new printInPrinter(tr("Print..."));
+    auto actionPrint=new printInPrinter(QObject::tr("Print..."));
     actionPrint->setShortcuts(QKeySequence::Print);
     actionPrint->setAplication(apl);
     actions.push_back(actionPrint);
@@ -122,10 +122,11 @@ SaveActionPool::SaveActionPool(AbstractMainApplication* apl)
 }
 
 //delete all actions in pool
-SaveActionPool::~SaveActionPool() override
+//all delation is done in base class
+SaveActionPool::~SaveActionPool()
 {
-    for (auto ac : actions)
+    /*for (auto ac : actions)
     {
         delete ac;
-    }
+    }*/
 }

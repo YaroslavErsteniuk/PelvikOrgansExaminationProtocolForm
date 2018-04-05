@@ -39,9 +39,9 @@ MainWindow::MainWindow(const QStringList &askKeywords, QWidget *parent) :
     if (!initializeWidgets(askKeywords))
          throw InvalidInitialization("MainWindow::initializeComboBox failed");
 
-   connect(ui->printPushButton,&QPushButton::clicked,this,&MainWindow::printForm);
+   /*connect(ui->printPushButton,&QPushButton::clicked,this,&MainWindow::printForm);
    connect(ui->pdfPushButton,&QPushButton::clicked,this,&MainWindow::toPdfForm);
-   connect(ui->htmlPushButton,&QPushButton::clicked,this,&MainWindow::toHtmlForm);
+   connect(ui->htmlPushButton,&QPushButton::clicked,this,&MainWindow::toHtmlForm);*/
 
    if (!fileMenu)
    {
@@ -422,19 +422,20 @@ bool MainWindow::initializeOvary(QComboBox* vizualizationOvaryComboBox, QComboBo
   * If registering is impossible return false
   * else return true.
   */
- bool MainWindow::registerAction(MyAction *action) noexcept override
+ bool MainWindow::registerAction(MyAction *action) noexcept
  //Add action in the menu and for some of them add a shortcut
  {
     if (!fileMenu)
        fileMenu=new QMenu(tr("File"), this);
      fileMenu->addAction(action);
+     return true;
  }
 
  /* Function for ending registration of actions in UI.
   * If all ok return true, otherwise return false.
   * Used for adding a menu to main window.
   */
- bool MainWindow::allActionsRegistered() noexcept override
+ bool MainWindow::allActionsRegistered() noexcept
  {
      ui->menuBar->addMenu(fileMenu);
      return true;

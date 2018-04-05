@@ -61,7 +61,7 @@ AbstractMainApplication::~AbstractMainApplication()
  * @ok_in is parameter for checking the validity of template realisation.
  * Default realisation use AbstractForm::getForm.
  */
-virtual QString AbstractMainApplication::getForm(bool* ok_in) const noexcept
+QString AbstractMainApplication::getForm(bool* ok_in) const noexcept
 {
     return fromPtr->getForm(ok_in);
 }

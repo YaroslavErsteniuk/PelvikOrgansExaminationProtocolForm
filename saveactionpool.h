@@ -7,7 +7,7 @@
 namespace PelvikOrgansExaminationProtocolForm
 {
     //Action for creating pdf from form
-    class CreatePDFAction:MyAction
+    class CreatePDFAction:public MyAction
     {
         Q_OBJECT
     protected:
@@ -34,7 +34,7 @@ namespace PelvikOrgansExaminationProtocolForm
     };
 
     //Action for creating html from form
-    class CreateHTMLAction:MyAction
+    class CreateHTMLAction:public MyAction
     {
         Q_OBJECT
     protected:
@@ -62,7 +62,7 @@ namespace PelvikOrgansExaminationProtocolForm
 
 
     //Action for printing from form
-    class printInPrinter:MyAction
+    class printInPrinter:public MyAction
     {
         Q_OBJECT
     protected:
