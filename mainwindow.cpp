@@ -189,18 +189,18 @@ bool MainWindow::initializeUterus() noexcept
     tmpList.clear();
     tmpList.push_back(ui->echostructureUterusCervicusCanalEdit);
     auto echostructureIt=dependentWidgets.insert(dependentWidgets.end(),tmpList);
-    auto echostructureDependentedWidgetsChange=[&](const QString& comboBoxValue)
+    auto echostructureDependentedWidgetsChange=[=](const QString& comboBoxValue)
     {
         if (notEnoughEchostructureInfo.contains(comboBoxValue,Qt::CaseInsensitive))
         {
-            setDependentWidgetsEnabling(echostructureIt,false);
+            setDependentWidgetsEnabling(echostructureIt,true);
         }
         else
         {
-            setDependentWidgetsEnabling(echostructureIt,true);
+            setDependentWidgetsEnabling(echostructureIt,false);
         }
     };
-    auto echostructureDependentedWidgetsEditableChange=[&](QWidget* widget_, bool isEditable_)
+    auto echostructureDependentedWidgetsEditableChange=[=](QWidget* widget_, bool isEditable_)
         {
                 if (widget_==ui->echostructureUterusCervicusCanalComboBox)
                 {
@@ -219,6 +219,7 @@ bool MainWindow::initializeUterus() noexcept
             echostructureDependentedWidgetsChange);
     connect(this,&MainWindow::widgetEnable,echostructureDependentedWidgetsEditableChange);
     connect(this,&MainWindow::widgetVisible,echostructureDependentedWidgetsEditableChange);
+    echostructureDependentedWidgetsChange(ui->echostructureUterusCervicusCanalComboBox->currentText());
 
     return true;
 }
