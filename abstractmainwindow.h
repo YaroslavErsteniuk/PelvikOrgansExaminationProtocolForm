@@ -111,11 +111,12 @@ namespace PelvikOrgansExaminationProtocolForm
          */
         virtual bool registerAction(MyAction* action) noexcept =0;
 
-        /* pure virtual function for ending registration of actions in UI.
+        /* Virtual function for ending registration of actions in UI.
          * If all ok return true, otherwise return false.
          * May be used, for example, for adding a menu to main window.
          */
-        virtual bool allActionsRegistered() noexcept =0;
+        virtual bool allActionsRegistered() noexcept
+            { return true; }
     signals:
         /* signal is emmited when
          * user is thinking all answers is right

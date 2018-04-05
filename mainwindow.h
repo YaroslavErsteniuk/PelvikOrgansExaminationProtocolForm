@@ -34,7 +34,7 @@ public:
     {
         Q_OBJECT
     protected:
-        QMenu* fileMenu;
+        QMenu* fileMenu=nullptr;
     public:
         /*Initialize  predefined hard-coded input interface.
          * GUI created by Qt-design tool.

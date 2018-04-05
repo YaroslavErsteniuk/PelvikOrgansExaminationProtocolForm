@@ -47,7 +47,6 @@ MainWindow::MainWindow(const QStringList &askKeywords, QWidget *parent) :
    {
        fileMenu=new QMenu(tr("File"), this);
    }
-   menuBar()->addMenu(fileMenu);
 }
 
 MainWindow::~MainWindow()
